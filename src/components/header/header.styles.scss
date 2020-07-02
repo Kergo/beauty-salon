@@ -1,0 +1,39 @@
+.header {
+  display: flex;
+  position: sticky;
+  top: 0;
+  background: #333;
+  color: #fff;
+  justify-content: space-between;
+  z-index: 1;
+  padding: 1rem;
+
+  .logo-container {
+      height: 3rem;
+      width: 3rem;
+    //   padding: .5rem;
+    margin-left: 3rem;
+  }
+
+  .logo {
+      height: 100%;
+      width: 100%;
+  }
+
+  .options {
+    display: flex;
+    align-items: center;
+    list-style: none;
+
+    .option {
+      color: #fff;
+      padding: .75rem;
+      margin: 0 .25rem;
+    }
+
+    a:hover {
+      background: #93cb52;
+      border-radius: 5px;
+    }
+  }
+}
