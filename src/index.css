@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
 
 * {
   box-sizing: border-box;
@@ -11,7 +11,7 @@ html {
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Dosis', sans-serif;
   line-height: 1.4;
 }
 
@@ -21,4 +21,16 @@ a {
 
 p {
   margin: 0.75rem 0;
+}
+
+ul {
+  list-style: none;
+}
+
+h2, h3, h4 {
+  text-transform: uppercase;
+}
+
+img {
+  width: 100%;
 }

@@ -1,0 +1,15 @@
+.sign-in {
+    padding: 3rem;
+    width: 38rem;
+    display: flex;
+    flex-direction: column;
+  
+    .title {
+      margin: 1rem 0;
+    }
+  
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
