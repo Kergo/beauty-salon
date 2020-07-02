@@ -6,13 +6,16 @@
   padding: 0;
 }
 
-html {  
+html {
+  font-size: 62.5%;
+  /* 1rem = 10px, 10px/16x = 62.5% */  
   scroll-behavior: smooth;
 }
 
 body {
   font-family: 'Dosis', sans-serif;
   line-height: 1.4;
+  font-size: 1.6rem;
 }
 
 a {
