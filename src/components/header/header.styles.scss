@@ -7,18 +7,18 @@
   justify-content: space-between;
   z-index: 1;
   padding: 1rem;
-//   font-size: 1.6rem;
+  //   font-size: 1.6rem;
 
   .logo-container {
-      height: 5rem;
-      width: 5rem;
+    height: 5rem;
+    width: 5rem;
     //   padding: .5rem;
     margin-left: 3rem;
   }
 
   .logo {
-      height: 100%;
-      width: 100%;
+    height: 100%;
+    width: 100%;
   }
 
   .options {
@@ -28,13 +28,20 @@
 
     .option {
       color: #fff;
-      padding: .75rem;
-      margin: 0 .25rem;
-    }
+      text-transform: uppercase;
+      padding: 0.75rem;
+      margin: 0 0.25rem;
+      border-bottom: 3px solid transparent;
+      padding-bottom: 0.5rem;
+      transition: border-color 0.5s;
 
-    a:hover {
-      background: #93cb52;
-      border-radius: 5px;
+      &:hover {
+        border-color: white;
+      }
+
+      &.current {
+        border-color: grey;
+      }
     }
   }
 }
