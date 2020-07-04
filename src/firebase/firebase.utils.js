@@ -28,7 +28,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
     const { displayName, email } = userAuth;
     const createdAt = new Date();
 
-    // Make a request to our database to store the data
+    // If there is no document for the user we will create a new object (document)
     try {
       await userRef.set({
         displayName,
