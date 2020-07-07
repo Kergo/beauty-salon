@@ -2,6 +2,8 @@ import React from 'react';
 
 import './homepage.styles.scss';
 
-const HomePage = () => <div>Home</div>;
+import ProductUpload from '../../components/product-upload/product-upload.component';
+
+const HomePage = () => <div><ProductUpload /></div>;
 
 export default HomePage;

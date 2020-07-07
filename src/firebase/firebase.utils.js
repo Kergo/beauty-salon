@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
+import 'firebase/storage';
 
 // Configuration for Firebase
 const config = {
@@ -18,12 +19,12 @@ const config = {
 export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;
 
-  const userRef = firestore.doc(`users/${userAuth.uid}`)
+  const userRef = firestore.doc(`users/${userAuth.uid}`);
 
   const snapShot = await userRef.get();
 
   // Check if the data of the user exist in our database. If there isn't create a new user using the userAuth object
-  if(!snapShot.exists) {
+  if (!snapShot.exists) {
     // retrieve user information from the firebase snapshot
     const { displayName, email } = userAuth;
     const createdAt = new Date();
@@ -34,20 +35,54 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
         displayName,
         email,
         createdAt,
-        ...additionalData
-      })
+        ...additionalData,
+      });
     } catch (error) {
       console.error('Error creating user', error.message);
     }
   }
   // return the user reference in case we use it for something else in our app
   return userRef;
+};
+
+// Adding image into store
+export const imageUpload = async (image) => {
+  const storageRef = storage.ref(`images/${image.name}`).put(image);
+
+  // try {
+  //   await storageRef.on(
+  //     'state_changed',
+  //     snapshot => {},
+  //     error => {
+  //       console.error(error);
+  //     },
+  //     () => {
+  //       storage
+  //         .ref('images')
+  //         .child(image.name)
+  //         .getDownloadURL()
+  //         .then(url => {
+  //           return url;
+  //         });
+  //     }
+  //   );
+  // } catch (error) {
+  //   console.error(error);
+  // }
+  console.log(storageRef);
+  return storageRef;
+};
+
+// Adding product into the database
+export const createProductDocument = async props => {
+  console.log(props)
 }
 
 firebase.initializeApp(config);
 
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
+export const storage = firebase.storage();
 
 // Initialize Google authentication provider
 const provider = new firebase.auth.GoogleAuthProvider();
