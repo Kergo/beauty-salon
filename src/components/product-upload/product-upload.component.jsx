@@ -193,9 +193,9 @@ class ProductUpload extends Component {
               value={category}
               onChange={this.handleChange}
             >
-              <option name="face">Face</option>
-              <option name="body">Body</option>
-              <option name="hair">Hair</option>
+              <option name="face">face</option>
+              <option name="body">body</option>
+              <option name="hair">hair</option>
             </select>
             <select
               className="custom-button"
@@ -203,8 +203,8 @@ class ProductUpload extends Component {
               value={gender}
               onChange={this.handleChange}
             >
-              <option name="men">Men</option>
-              <option name="women">Women</option>
+              <option name="men">men</option>
+              <option name="women">women</option>
             </select>
           </div>
           <CustomButton type="submit">Upload</CustomButton>
@@ -215,8 +215,8 @@ class ProductUpload extends Component {
       <div>
       {this.state.progress > 0 ? <progress value={this.stateprogress} max="100" /> : ''}
       <p>{this.stateerror}</p>
-      </div>
-    {this.state.url ? <img src={this.state.url} alt=''/> : ''} */}
+      </div> */}
+    {/* {this.state.url ? <img src={this.state.url} alt=''/> : ''} */}
       </div>
     );
   }

@@ -52,6 +52,41 @@ export const getProductsDocuments = async docRef => {
   return productsDoc;
 };
 
+export const getAllProductsDocuments = async () => {
+  let data = [];
+  await firestore
+    .collection('products')
+    .get()
+    .then(querySnapshot => {
+      querySnapshot.forEach(doc => {
+        // data.push(doc.data())
+        console.log(doc.data());
+        data = convertCollectionsSnapshotToMap(querySnapshot);
+        // console.log(productsMap);
+        // return productsMap;
+      });
+    });
+  console.log(data);
+  return data;
+};
+
+export const convertCollectionsSnapshotToMap = collections => {
+  const transformedCollection = collections.docs.map(doc => {
+    const { items } = doc.data();
+
+    return {
+      routeName: encodeURI(doc.id.toLowerCase()),
+      id: doc.id,
+      items,
+    };
+  });
+  // console.log(transformedCollection);
+  return transformedCollection.reduce((accumulator, collection) => {
+    accumulator[collection] = collection;
+    return accumulator;
+  }, {});
+};
+
 // Adding product into the database
 export const createProductDocument = async props => {
   const categoryRef = firestore.collection('products').doc(props.category);
@@ -60,16 +95,15 @@ export const createProductDocument = async props => {
   try {
     const createdAt = new Date();
     if (!snapShot.exists) {
-      await categoryRef.set(
-        {
-          items: [{ id: 0, createdAt, ...props }],
-        }
-      );
+      await categoryRef.set({
+        items: [{ id: 0, createdAt, ...props }],
+      });
     } else {
       let id = 0;
       const productsDoc = await getProductsDocuments(props.category);
-      const lastId = productsDoc.data().items[productsDoc.data().items.length - 1]
-        .id;
+      const lastId = productsDoc.data().items[
+        productsDoc.data().items.length - 1
+      ].id;
       id = lastId + 1;
       const data = {
         createdAt,
@@ -82,7 +116,6 @@ export const createProductDocument = async props => {
     }
   } catch (error) {
     console.error('Error creating product', error.message);
-    
   }
 };
 

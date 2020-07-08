@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getProductsDocuments } from '../../firebase/firebase.utils';
+import { getAllProductsDocuments } from '../../firebase/firebase.utils';
 
 export class ProductsOverview extends Component {
   constructor(props) {
@@ -10,14 +10,20 @@ export class ProductsOverview extends Component {
     };
   }
 
-  async componentDidMount() {
-    const products = await getProductsDocuments('face');
-    console.log(products.data());
+  getData = async () => {
+    const data = await getAllProductsDocuments();
+    console.log(typeof data);
+    this.setState({ ...data });
+    console.log(this.state.data);
+    
+  };
 
-    // this.setState({ data: products.data().items });
+  componentDidMount() {
+    this.getData();
+    
   }
   render() {
-    return <div>{this.state.data.items}</div>;
+    return <div>{this.state.data}</div>;
   }
 }
 
