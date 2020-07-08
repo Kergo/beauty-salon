@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 
 import {
-  imageUpload,
   createProductDocument,
+  storage,
 } from '../../firebase/firebase.utils.js';
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
-import { storage } from '../../firebase/firebase.utils.js';
 
 import './product-upload.styles.scss';
 
@@ -16,7 +15,7 @@ class ProductUpload extends Component {
 
     this.state = {
       image: null,
-      url: '',
+      imageUrl: '',
       progress: 0,
       error: '',
       name: '',
@@ -25,7 +24,9 @@ class ProductUpload extends Component {
       ingredients: '',
       usage: '',
       productStorage: '',
-      category: '',
+      size: '',
+      category: 'face',
+      gender: 'men',
     };
   }
 
@@ -40,11 +41,12 @@ class ProductUpload extends Component {
       usage,
       productStorage,
       category,
+      gender,
+      size
     } = this.state;
 
     if (image) {
-      const storageRef = await imageUpload(image);
-      console.log(storageRef);
+      const storageRef = await storage.ref(`images/${image.name}`).put(image);
 
       try {
         storageRef.task.on(
@@ -58,73 +60,29 @@ class ProductUpload extends Component {
               .ref('images')
               .child(image.name)
               .getDownloadURL()
-              .then(url => {
-                this.setState({ url });
+              .then(imageUrl => {
+                this.setState({ imageUrl });
+                createProductDocument({
+                  name,
+                  price: Number(price),
+                  description,
+                  ingredients,
+                  usage,
+                  productStorage,
+                  category,
+                  gender,
+                  size: Number(size),
+                  imageUrl,
+                });
               });
           }
         );
-
-        createProductDocument({
-          name,
-          price,
-          description,
-          ingredients,
-          usage,
-          productStorage,
-          category,
-        });
-        this.setState({
-          image: null,
-          url: '',
-          progress: 0,
-          error: '',
-          name: '',
-          price: '',
-          description: '',
-          ingredients: '',
-          usage: '',
-          productStorage: '',
-          category: '',
-        });
       } catch (error) {
         console.error(error);
       }
-
-      // const uploadTask = storage.ref(`images/${image.name}`).put(image);
-
-      // uploadTask.on(
-      //   'state_changed',
-      //   snapshot => {
-      //     const progress = Math.round(
-      //       (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-      //     );
-      //     setProgress(progress);
-      //   },
-      //   error => {
-      //     console.error(error);
-      //   },
-      //   () => {
-      //     storage
-      //       .ref('images')
-      //       .child(image.name)
-      //       .getDownloadURL()
-      //       .then(url => {
-      //         setUrl(url);
-      //         setProgress(0);
-      //         setImage(null);
-      //         setError('')
-      //       });
-      //   }
-      // );
     } else {
       this.setState({ error: 'Error please choose an image to upload' });
     }
-
-    // const { name, price, imgFile } = this.state;
-
-    // console.log(name);
-    // console.log(price);
-    // console.log(imgFile);
   };
 
   handleChange = e => {
@@ -134,7 +92,7 @@ class ProductUpload extends Component {
 
   handleFile = e => {
     const file = e.target.files[0];
-    console.log(file);
+    // console.log(file);
     if (file) {
       const fileType = file['type'];
       const validImageTypes = ['image/jpeg', 'image/jpg', 'image/png'];
@@ -145,81 +103,82 @@ class ProductUpload extends Component {
         this.setState({ error: 'Please select an image to upload' });
       }
     }
-
-    console.log('image: ', this.state.image);
   };
 
   render() {
     const {
-      image,
       name,
       price,
       description,
       ingredients,
       usage,
       productStorage,
+      size,
       category,
+      gender,
     } = this.state;
     return (
       <div className="product-upload">
         <h2 className="title">Add Product</h2>
         <form className="product-upload-form" onSubmit={this.handleSubmit}>
-          <div className="product-column">
-            <FormInput
-              className="form-input"
-              type="text"
-              name="name"
-              value={name}
-              label="Name"
-              onChange={this.handleChange}
-              required
-            />
-            <FormInput
-              className="form-input"
-              type="text"
-              name="price"
-              value={price}
-              label="Price"
-              onChange={this.handleChange}
-              required
-            />
-          </div>
-          <div className="product-column">
-            <FormInput
-              type="text"
-              name="description"
-              value={description}
-              label="Description"
-              onChange={this.handleChange}
-              required
-            />
-            <FormInput
-              type="text"
-              name="ingredients"
-              value={ingredients}
-              label="Ingredients"
-              onChange={this.handleChange}
-              required
-            />
-          </div>
-          <div className="product-column">
-            <FormInput
-              type="text"
-              name="usage"
-              value={usage}
-              label="Usage"
-              onChange={this.handleChange}
-              required
-            />
-            <FormInput
-              type="text"
-              name="productStorage"
-              value={productStorage}
-              label="Storage"
-              onChange={this.handleChange}
-              required
-            />
-          </div>
+          <FormInput
+            className="form-input"
+            type="text"
+            name="name"
+            value={name}
+            label="Name"
+            onChange={this.handleChange}
+            required
+          />
+          <FormInput
+            className="form-input"
+            type="text"
+            name="price"
+            value={price}
+            label="Price"
+            onChange={this.handleChange}
+            required
+          />
+          <FormInput
+            type="text"
+            name="description"
+            value={description}
+            label="Description"
+            onChange={this.handleChange}
+            required
+          />
+          <FormInput
+            type="text"
+            name="ingredients"
+            value={ingredients}
+            label="Ingredients"
+            onChange={this.handleChange}
+            required
+          />
+          <FormInput
+            type="text"
+            name="usage"
+            value={usage}
+            label="Usage"
+            onChange={this.handleChange}
+            required
+          />
+          <FormInput
+            type="text"
+            name="productStorage"
+            value={productStorage}
+            label="Storage"
+            onChange={this.handleChange}
+            required
+          />
+          <FormInput
+            type="text"
+            name="size"
+            value={size}
+            label="Size"
+            onChange={this.handleChange}
+            required
+          />
           <input
             className="custom-button"
             type="file"
@@ -234,12 +193,21 @@ class ProductUpload extends Component {
               value={category}
               onChange={this.handleChange}
             >
-              <option name="oil">Oil</option>
+              <option name="face">Face</option>
               <option name="body">Body</option>
               <option name="hair">Hair</option>
             </select>
-            <CustomButton type="submit">Upload</CustomButton>
+            <select
+              className="custom-button"
+              name="gender"
+              value={gender}
+              onChange={this.handleChange}
+            >
+              <option name="men">Men</option>
+              <option name="women">Women</option>
+            </select>
           </div>
+          <CustomButton type="submit">Upload</CustomButton>
         </form>
 
         {/* <input type="file" onChange={this.handleFile} />{' '}

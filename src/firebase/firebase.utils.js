@@ -45,38 +45,46 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   return userRef;
 };
 
-// Adding image into store
-export const imageUpload = async (image) => {
-  const storageRef = storage.ref(`images/${image.name}`).put(image);
-
-  // try {
-  //   await storageRef.on(
-  //     'state_changed',
-  //     snapshot => {},
-  //     error => {
-  //       console.error(error);
-  //     },
-  //     () => {
-  //       storage
-  //         .ref('images')
-  //         .child(image.name)
-  //         .getDownloadURL()
-  //         .then(url => {
-  //           return url;
-  //         });
-  //     }
-  //   );
-  // } catch (error) {
-  //   console.error(error);
-  // }
-  console.log(storageRef);
-  return storageRef;
+export const getProductsDocuments = async docRef => {
+  const productsRef = firestore.collection('products').doc(docRef);
+  const productsDoc = await productsRef.get();
+  console.log('Document data:', productsDoc.data());
+  return productsDoc;
 };
 
 // Adding product into the database
 export const createProductDocument = async props => {
-  console.log(props)
-}
+  const categoryRef = firestore.collection('products').doc(props.category);
+  const snapShot = await categoryRef.get();
+
+  try {
+    const createdAt = new Date();
+    if (!snapShot.exists) {
+      await categoryRef.set(
+        {
+          items: [{ id: 0, createdAt, ...props }],
+        }
+      );
+    } else {
+      let id = 0;
+      const productsDoc = await getProductsDocuments(props.category);
+      const lastId = productsDoc.data().items[productsDoc.data().items.length - 1]
+        .id;
+      id = lastId + 1;
+      const data = {
+        createdAt,
+        id,
+        ...props,
+      };
+      categoryRef.update({
+        items: firebase.firestore.FieldValue.arrayUnion(data),
+      });
+    }
+  } catch (error) {
+    console.error('Error creating product', error.message);
+    
+  }
+};
 
 firebase.initializeApp(config);
 
