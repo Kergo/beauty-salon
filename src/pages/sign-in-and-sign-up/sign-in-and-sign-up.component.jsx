@@ -5,7 +5,6 @@ import SignUp from '../../components/sign-up/sign.up.component';
 import CustomButton from '../../components/custom-button/custom-button.component';
 
 import './sign-in-and-sign-up.styles.scss';
-import { render } from '@testing-library/react';
 
 class SignInAndSignUpPage extends React.Component {
   constructor(props) {
