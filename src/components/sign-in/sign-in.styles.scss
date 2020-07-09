@@ -4,9 +4,12 @@
     display: flex;
     flex-direction: column;
     // font-size: 1.6rem;
+    margin: 0 auto;
+    align-items: center;
+
   
     .title {
-      margin: 1rem 0;
+      margin: 1rem auto;
     }
   
     .buttons {
