@@ -9,6 +9,8 @@ import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import ProductsPage from './pages/products/products.component';
 
+import CurrentUserContext from './contexts/current-user/current-user.context';
+
 class App extends React.Component {
   constructor() {
     super();
@@ -17,7 +19,6 @@ class App extends React.Component {
       currentUser: null,
     };
   }
-
   unsubscribeFromAuth = null;
 
   componentDidMount() {
@@ -49,10 +50,13 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Header currentUser={this.state.currentUser} />
-        <div className='wrapper'>
+        <CurrentUserContext.Provider value={this.state.currentUser}>
+          <Header />
+        </CurrentUserContext.Provider>
+        <div className="wrapper">
           <Switch>
             <Route exact path="/" component={HomePage} />
+            <Route path="/products" component={ProductsPage} />
             <Route
               exact
               path="/signin"
@@ -64,7 +68,6 @@ class App extends React.Component {
                 )
               }
             />
-            <Route path="/products" component={ProductsPage} />
           </Switch>
         </div>
       </div>
