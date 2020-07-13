@@ -2,13 +2,11 @@
   display: flex;
   position: sticky;
   top: 0;
-  color: #fff;
   background: #345;
   justify-content: space-between;
   z-index: 1;
   padding: 1rem;
   //   font-size: 1.6rem;
-  font-weight: bold;
 
   .logo-container {
     height: 5rem;
@@ -26,6 +24,9 @@
     display: flex;
     align-items: center;
     list-style: none;
+
+    color: #fff;
+    font-weight: bold;
 
     .option {
       color: inherit;
