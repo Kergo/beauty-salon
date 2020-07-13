@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 
 import ProductsOverview from '../../components/products-overview/products-overview.component';
 import ProductsContext from '../../contexts/products/products.context';
@@ -7,7 +7,12 @@ import './products.styles.scss';
 
 const ProductsPage = ({ match }) => {
   const productsContext = useContext(ProductsContext);
-  const { products } = productsContext;
+  const { products, getProducts } = productsContext;
+
+  useEffect(() => {
+    getProducts();
+    // eslint-disable-next-line
+  }, []);
 
   console.log(match)
 
