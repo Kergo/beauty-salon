@@ -1,30 +1,19 @@
-import React, { Component } from 'react';
-import { getAllProductsDocuments } from '../../firebase/firebase.utils';
+import React from 'react';
+import ProductItem from '../product-item/product-item.component';
+import './products-overview.styles.scss';
 
-export class ProductsOverview extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      data: [],
-    };
-  }
-
-  getData = async () => {
-    const data = await getAllProductsDocuments();
-    console.log(typeof data);
-    this.setState({ ...data });
-    console.log(this.state.data);
-    
-  };
-
-  componentDidMount() {
-    this.getData();
-    
-  }
-  render() {
-    return <div>{this.state.data}</div>;
-  }
-}
-
+const ProductsOverview = ({ products }) => {
+  return (
+    <div className="products-overview">
+      <h2 className="title">{products.title}</h2>
+      <div className="overview">
+        {products.items
+          .filter((item, idx) => idx < 4)
+          .map(({ id, ...itemProps }) => (
+            <ProductItem key={id} item={itemProps} />
+          ))}
+      </div>
+    </div>
+  );
+};
 export default ProductsOverview;

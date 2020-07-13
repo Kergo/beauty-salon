@@ -9,6 +9,7 @@ import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import ProductsPage from './pages/products/products.component';
 
+import ProductsState from './contexts/products/Products.state';
 import CurrentUserContext from './contexts/current-user/current-user.context';
 
 class App extends React.Component {
@@ -56,18 +57,20 @@ class App extends React.Component {
         <div className="wrapper">
           <Switch>
             <Route exact path="/" component={HomePage} />
-            <Route path="/products" component={ProductsPage} />
-            <Route
-              exact
-              path="/signin"
-              render={() =>
-                this.state.currentUser ? (
-                  <Redirect to="/" />
-                ) : (
-                  <SignInAndSignUpPage />
-                )
-              }
-            />
+            <ProductsState>
+              <Route path="/products" component={ProductsPage} />
+              <Route
+                exact
+                path="/signin"
+                render={() =>
+                  this.state.currentUser ? (
+                    <Redirect to="/" />
+                  ) : (
+                    <SignInAndSignUpPage />
+                  )
+                }
+              />
+            </ProductsState>
           </Switch>
         </div>
       </div>
