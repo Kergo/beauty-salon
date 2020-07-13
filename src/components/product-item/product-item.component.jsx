@@ -6,7 +6,7 @@ import './product-item.styles.scss';
 
 const ProductItem = ({ item }) => {
   const {name, imageUrl, price } = item;
-  console.log(item);
+  // console.log(item);
   return (
     <div className="product-item">
       <div

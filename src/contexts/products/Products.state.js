@@ -1,27 +1,28 @@
 import React, { useReducer } from 'react';
 import ProductsContext from './products.context';
 import productsReducer from './products.reducer';
-import data from './data';
 import { firestore } from '../../firebase/firebase.utils';
 
 const ProductsState = props => {
   const initialState = {
-    products: data,
+    products: [],
   };
 
   const [state, dispatch] = useReducer(productsReducer, initialState);
 
   // Get Products
   const getProducts = async () => {
+    const data = [];
     try {
-      const data = [];
-      const snapShot = await firestore.collection('products').get();
-      snapShot
-        .forEach(doc => {
-          data.push(doc.data());
+      await firestore
+        .collection('products')
+        .get()
+        .then(querySnapshot => {
+          querySnapshot.forEach(doc => {
+            data.push({ id: data.length, title: doc.id, ...doc.data() });
+          });
         })
         .then(() => {
-          console.log(data);
           dispatch({
             type: 'GET_PRODUCTS',
             payload: data,
@@ -31,25 +32,6 @@ const ProductsState = props => {
       console.log(error);
     }
   };
-
-  // const getProducts = async () => {
-  //   try {
-  //     const snapshot = await firestore
-  //       .collection('products')
-  //       .get()
-  //       // .then(querySnapshot => {
-  //       //   querySnapshot.forEach(doc => {
-  //       //     dispatch({
-  //       //       type: 'GET_PRODUCTS',
-  //       //       payload: doc.data(),
-  //       //     });
-  //       //   });
-  //       // });
-  //       console.log(snapshot)
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
 
   return (
     <ProductsContext.Provider value={{ products: state.products, getProducts }}>
