@@ -14,7 +14,7 @@ const ProductsPage = ({ match }) => {
     // eslint-disable-next-line
   }, []);
 
-  console.log(match)
+  // console.log(products)
 
   return (
     <div className="products-page">
