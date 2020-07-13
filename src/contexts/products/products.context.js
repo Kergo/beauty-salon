@@ -1,7 +1,5 @@
 import { createContext } from 'react';
 
-import data from './data';
+const productsContext = createContext();
 
-const ProductsContext = createContext(data)
-
-export default ProductsContext;
+export default productsContext;

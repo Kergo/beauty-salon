@@ -1,87 +1,26 @@
-import React, { Component } from 'react';
+import React, { useContext } from 'react';
 
-import ProductUpload from '../../components/product-upload/product-upload.component';
 import ProductsOverview from '../../components/products-overview/products-overview.component';
+import ProductsContext from '../../contexts/products/products.context';
+
 import './products.styles.scss';
-import ProductPreview from '../../components/product-preview/product-preview.component';
 
-class ProductsPage extends Component {
-  constructor(props) {
-    super(props);
+const ProductsPage = ({ match }) => {
+  const productsContext = useContext(ProductsContext);
+  const { products } = productsContext;
 
-    this.state = {
-      products: [
-        {
-          id: 1,
-          title: 'face',
-          items: [
-            {
-              description: 'Brada Oil Mnogo Qko',
-              gender: 'men',
-              id: 0,
-              imageUrl:
-                'https://firebasestorage.googleapis.com/v0/b/beauty-salon-8a9d4.appspot.com/o/images%2Fdaiga-ellaby-uooMllXe6gE-unsplash.jpg?alt=media&token=9c3b85a0-106a-48de-829d-884a267b7908',
-              ingredients: 'Oil, Laina',
-              name: 'Brada Oil',
-              price: 22.5,
-              productStorage: 'Na suho',
-              size: 125,
-              usage: 'Nanesete na bradata',
-            },
-          ],
-        },
-        {
-          id: 2,
-          title: 'body',
-          items: [
-            {
-              description:
-                'Spear is the sweet, fresh and invigorating mint scent you’ve always looked for. The oil is enhanced by hints of lavender, basil and delicately topped off with the earthy and calming aroma of patchouli. Moisturizing and soothing skin, making the beard softer, Spear will keep both clean and fragrant at all times with our deep nourishing combination of base oils, using the natural properties of apricot, almond, jojoba and castor oil.',
-              gender: 'men',
-              id: 0,
-              imageUrl:
-                'https://firebasestorage.googleapis.com/v0/b/beauty-salon-8a9d4.appspot.com/o/images%2Fphoto-1464863979621-258859e62245.jpeg?alt=media&token=733db66c-3d6b-49ac-89a4-df4350bb709e',
-              ingredients:
-                '  Essential oils of Mentha Piperita, Mentha Spicata, Patchouli, Basil, Lavender, Apricot kernels, Almond, Jojoba, Castor oil. Contains natural ingredients Linalool and Limonene. No artificial colors, flavors, or preservatives.',
-              name: 'Massage oil',
-              price: 35,
-              productStorage:
-                'Keep out of reach of children at room temperature between 5°C and 25°C.',
-              size: 250,
-              usage:
-                'Apply several drops of Bole onto your palm or fingertips. Massage into your beard and the skin underneath. Suitable for all skin types. For best results, apply once or twice daily for a stronger, more attractive beard and hydrated skin.',
-            },
-          ],
-        },
-        {
-          id: 3,
-          title: 'hair',
-          items: [
-            {
-              id: 0,
-              imageUrl:
-                'https://firebasestorage.googleapis.com/v0/b/beauty-salon-8a9d4.appspot.com/o/images%2Fkelly-sikkema-fvegJucmMZI-unsplash.jpg?alt=media&token=a7fb9dc4-b837-489e-8f0e-02845954e411',
-              name: 'Strawberry Shower Gel',
-              price: 5.5,
-            },
-          ],
-        },
-      ],
-    };
-  }
+  console.log(match)
 
-  render() {
-    const { products } = this.state;
-    return (
-      <div>
-        {/* <ProductUpload /> */}
-        {/* <ProductsOverview /> */}
-        {products.map(({ id, ...productProps }) => (
-          <ProductPreview key={id} {...productProps} />
+  return (
+    <div className="products-page">
+      {/* <h2 className="title">{title}</h2> */}
+      <div className="items">
+        {products.map(item => (
+          <ProductsOverview key={item.id} products={item} />
         ))}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default ProductsPage;

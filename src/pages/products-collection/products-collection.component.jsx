@@ -1,14 +1,30 @@
 import React from 'react';
 
-import CollectionItem from '../../components/product-item/product-item.component';
+import ProductItem from '../../components/product-item/product-item.component';
 
 import './products-collection.styles.scss';
 
-const ProductsCollectionPage = ({ match }) => {
-    console.log(match);
+const ProductsCollectionPage = ({ match, category }) => {
+  // const productsContext = useContext(ProductsContext);
+
+  // const { products } = productsContext;
+  console.log(category);
+
+  console.log(match);
+
+  // useEffect(() => {
+  //   getProducts();
+  //   // eslint-disable-next-line
+  // }, []);
   return (
     <div className="collection-page">
-      <h2>ProductsCollectionPage</h2>
+      <h2 className='title'>{category.title}</h2>
+      <div>
+        {category.items.map(item => (
+          <ProductItem key={item.id} item={item} />
+        ))}
+      </div>
+      {/* <ProductUpload /> */}
     </div>
   );
 };

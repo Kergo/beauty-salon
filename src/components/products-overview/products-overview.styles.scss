@@ -1,0 +1,16 @@
+.products-overview {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3rem;
+
+  .title {
+    align-self: center;
+    font-size: 2.8rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .overview {
+    display: flex;
+    justify-content: space-between;
+  }
+}
