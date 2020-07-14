@@ -14,7 +14,7 @@ const ProductItem = ({ item }) => {
       <div
         className="image"
         style={{
-          backgroundImage: `url(${imageUrl})`,
+          backgroundImage: `url(${imageUrl}), url('https://i.ya-webdesign.com/images/blank-price-tag-png-3.png')`,
         }}
       />
       <div className="product-footer">
