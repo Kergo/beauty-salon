@@ -1,0 +1,50 @@
+.services-overview {
+  // display: flex;
+  // flex-wrap: wrap;
+  // justify-content: space-evenly;
+  width: 40vw;
+  height: 35%;
+  margin: 1rem;
+  padding: 1rem;
+
+  .service-container {
+    // border: 1px solid black;
+    height: 40rem;
+    width: auto;
+    // margin-bottom: 4rem;
+    cursor: pointer;
+
+    .image {
+      height: 70%;
+      width: 100%;
+      // background-color: blue;
+      // width: 100%;
+      // height: 95%;
+      background-size: cover;
+      background-position: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .service-footer {
+      height: 30%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      .name {
+        align-self: center;
+        font-size: 2.2rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+      }
+
+      .description {
+        // width: 100%;
+        // overflow: hidden;
+      }
+    }
+  }
+}

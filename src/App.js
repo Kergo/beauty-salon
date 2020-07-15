@@ -12,6 +12,7 @@ import ProductsPage from './pages/products/products.component';
 import ProductsState from './contexts/products/products.state';
 import CurrentUserContext from './contexts/current-user/current-user.context';
 import CheckoutPage from './pages/checkout/checkout.component';
+import ServicesPage from './pages/services/services.component';
 
 class App extends React.Component {
   constructor() {
@@ -61,6 +62,7 @@ class App extends React.Component {
             <ProductsState>
               <Route path="/products" component={ProductsPage} />
               <Route exact path='/checkout' component={CheckoutPage} />
+              <Route exact path='/services' component={ServicesPage} />
               <Route
                 exact
                 path="/signin"
