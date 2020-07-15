@@ -4,6 +4,9 @@ import { withRouter } from 'react-router-dom';
 import './service-card.styles.scss';
 
 const ServiceCard = ({ history, match, title, description, imageUrl }) => {
+    console.log(history)
+    console.log(match);
+    
   return (
     <div
       className="service-card"

@@ -10,6 +10,7 @@ import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import ProductsPage from './pages/products/products.component';
 
 import ProductsState from './contexts/products/products.state';
+import ServicesState from './contexts/services/services.state';
 import CurrentUserContext from './contexts/current-user/current-user.context';
 import CheckoutPage from './pages/checkout/checkout.component';
 import ServicesPage from './pages/services/services.component';
@@ -60,20 +61,22 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" component={HomePage} />
             <ProductsState>
-              <Route path="/products" component={ProductsPage} />
-              <Route exact path='/checkout' component={CheckoutPage} />
-              <Route exact path='/services' component={ServicesPage} />
-              <Route
-                exact
-                path="/signin"
-                render={() =>
-                  this.state.currentUser ? (
-                    <Redirect to="/" />
-                  ) : (
-                    <SignInAndSignUpPage />
-                  )
-                }
-              />
+              <ServicesState>
+                <Route path="/products" component={ProductsPage} />
+                <Route exact path="/checkout" component={CheckoutPage} />
+                <Route exact path="/services" component={ServicesPage} />
+                <Route
+                  exact
+                  path="/signin"
+                  render={() =>
+                    this.state.currentUser ? (
+                      <Redirect to="/" />
+                    ) : (
+                      <SignInAndSignUpPage />
+                    )
+                  }
+                />
+              </ServicesState>
             </ProductsState>
           </Switch>
         </div>

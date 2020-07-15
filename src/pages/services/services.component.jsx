@@ -1,34 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useContext } from 'react';
 import ServicesDirectory from '../../components/services-directory/services-directory.component';
-import { firestore } from '../../firebase/firebase.utils';
+import ServicesContext from '../../contexts/services/services.context';
 
 import './services.styles.scss';
 
 const ServicesPage = () => {
-  const [services, setServices] = useState([]);
+  const servicesContext = useContext(ServicesContext);
+  const { services, getServices } = servicesContext;
+  console.log(getServices);
+  
 
   useEffect(() => {
-    getProducts();
+    getServices();
     // eslint-disable-next-line
   }, []);
 
-  console.log(services);
-  const getProducts = async () => {
-    const data = [];
-    try {
-      await firestore
-        .collection('services')
-        .get()
-        .then(querySnapshot => {
-          querySnapshot.forEach(doc => {
-            data.push({ id: data.length, title: doc.id, ...doc.data() });
-          });
-          setServices(data);
-        });
-    } catch (error) {
-      console.log(error);
-    }
-  };
   return (
     <div className="services-wrapper">
       <div className="services-page-title">
@@ -43,15 +29,14 @@ const ServicesPage = () => {
         </p>
       </div>
       <div className="services-container">
-
-      {services.map(service => (
-        <ServicesDirectory
-          key={service.id}
-          title={service.title}
-          imageUrl={service.imageUrl}
-          description={service.description}
-        />
-      ))}
+        {services.map(service => (
+          <ServicesDirectory
+            key={service.id}
+            title={service.title}
+            imageUrl={service.imageUrl}
+            description={service.description}
+          />
+        ))}
       </div>
     </div>
   );
