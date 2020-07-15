@@ -8,6 +8,8 @@ import './products.styles.scss';
 const ProductsPage = ({ match }) => {
   const productsContext = useContext(ProductsContext);
   const { products, getProducts } = productsContext;
+  console.log(getProducts);
+  
 
   useEffect(() => {
     getProducts();
