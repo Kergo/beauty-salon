@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import ServicesOverview from '../../components/services-overview/services-overview.component';
+import ServicesDirectory from '../../components/services-directory/services-directory.component';
 import { firestore } from '../../firebase/firebase.utils';
 
 import './services.styles.scss';
@@ -42,14 +42,17 @@ const ServicesPage = () => {
           team.
         </p>
       </div>
+      <div className="services-container">
+
       {services.map(service => (
-        <ServicesOverview
+        <ServicesDirectory
           key={service.id}
           title={service.title}
           imageUrl={service.imageUrl}
           description={service.description}
         />
       ))}
+      </div>
     </div>
   );
 };
