@@ -1,21 +1,34 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { useHistory, useRouteMatch } from 'react-router-dom';
 
 import './service-card.styles.scss';
 
-const ServiceCard = ({ history, match, title, description, imageUrl }) => {
-    console.log(history)
-    console.log(match);
-    
+const ServiceCard = ({ title, description, imageUrl }) => {
+  let history = useHistory();
+  let match = useRouteMatch();
+  // console.log(history);
+  // console.log(match);
+
   return (
     <div
       className="service-card"
-      onClick={() => history.push(`${match.url}/${title}`)}
+      onClick={() => {
+        if (!match.params.type) {
+          history.push(`${match.url}/${title}`);
+        } else {
+          history.push(`${title}`);
+        }
+      }}
     >
       <div className="service-card__side service-card__side--front">
-        <div className="service-card__picture" style={{
-            backgroundImage: `url(${imageUrl})`
-        }}>&nbsp;</div>
+        <div
+          className="service-card__picture"
+          style={{
+            backgroundImage: `url(${imageUrl})`,
+          }}
+        >
+          &nbsp;
+        </div>
         <h3 className="service-card__heading">{title}</h3>
       </div>
       <div className="service-card__side service-card__side--back">
@@ -27,4 +40,4 @@ const ServiceCard = ({ history, match, title, description, imageUrl }) => {
   );
 };
 
-export default withRouter(ServiceCard);
+export default ServiceCard;

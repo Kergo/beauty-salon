@@ -14,6 +14,7 @@ import ServicesState from './contexts/services/services.state';
 import CurrentUserContext from './contexts/current-user/current-user.context';
 import CheckoutPage from './pages/checkout/checkout.component';
 import ServicesPage from './pages/services/services.component';
+import ServiceOverview from './components/service-overview/service-overview.component';
 
 class App extends React.Component {
   constructor() {
@@ -65,6 +66,7 @@ class App extends React.Component {
                 <Route path="/products" component={ProductsPage} />
                 <Route exact path="/checkout" component={CheckoutPage} />
                 <Route exact path="/services" component={ServicesPage} />
+                <Route path="/services/:type" component={ServiceOverview} />
                 <Route
                   exact
                   path="/signin"

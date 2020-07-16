@@ -6,9 +6,7 @@ import './services.styles.scss';
 
 const ServicesPage = () => {
   const servicesContext = useContext(ServicesContext);
-  const { services, getServices } = servicesContext;
-  console.log(getServices);
-  
+  const { services, getServices } = servicesContext;  
 
   useEffect(() => {
     getServices();
