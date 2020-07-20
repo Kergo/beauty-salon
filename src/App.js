@@ -8,6 +8,7 @@ import Header from './components/header/header.component';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import ProductsPage from './pages/products/products.component';
+import ProductsCollectionPage from './pages/products-collection/products-collection.component';
 
 import ProductsState from './contexts/products/products.state';
 import ServicesState from './contexts/services/services.state';
@@ -63,7 +64,8 @@ class App extends React.Component {
             <Route exact path="/" component={HomePage} />
             <ProductsState>
               <ServicesState>
-                <Route path="/products" component={ProductsPage} />
+                <Route exact path="/products" component={ProductsPage} />
+                <Route path="/products/:type" component={ProductsCollectionPage} />
                 <Route exact path="/checkout" component={CheckoutPage} />
                 <Route exact path="/services" component={ServicesPage} />
                 <Route path="/services/:type" component={ServiceOverview} />

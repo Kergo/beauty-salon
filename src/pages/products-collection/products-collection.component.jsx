@@ -1,26 +1,28 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
+import ProductsContext from '../../contexts/products/products.context';
 
 import ProductItem from '../../components/product-item/product-item.component';
 
 import './products-collection.styles.scss';
 
-const ProductsCollectionPage = ({ match, category }) => {
-  // const productsContext = useContext(ProductsContext);
+const ProductsCollectionPage = ({ match }) => {
+  const productsContext = useContext(ProductsContext);
 
-  // const { products } = productsContext;
-  console.log(category);
+  const { products, getProducts } = productsContext;
 
   console.log(match);
 
-  // useEffect(() => {
-  //   getProducts();
-  //   // eslint-disable-next-line
-  // }, []);
+  useEffect(() => {
+    getProducts(match.params.type);
+    // eslint-disable-next-line
+  }, []);
+  console.log(products);
+
   return (
     <div className="collection-page">
-      <h2 className='title'>{category.title}</h2>
-      <div>
-        {category.items.map(item => (
+      <h2 className="title">{match.params.type}</h2>
+      <div className="products-wrapper">
+        {products.items.map(item => (
           <ProductItem key={item.id} item={item} />
         ))}
       </div>

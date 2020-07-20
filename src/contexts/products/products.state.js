@@ -5,13 +5,14 @@ import { firestore } from '../../firebase/firebase.utils';
 
 const ProductsState = props => {
   const initialState = {
-    products: [],
+    productsCollection: [],
+    products: {items: []},
   };
 
   const [state, dispatch] = useReducer(productsReducer, initialState);
 
-  // Get Products
-  const getProducts = async () => {
+  // Get Products Collection
+  const getProductsCollection = async () => {
     const data = [];
     try {
       await firestore
@@ -24,6 +25,25 @@ const ProductsState = props => {
         })
         .then(() => {
           dispatch({
+            type: 'GET_PRODUCTS_COLLECTION',
+            payload: data,
+          });
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getProducts = async docRef => {
+    let data = undefined;
+    try {
+      await firestore
+        .collection('products')
+        .doc(docRef)
+        .get()
+        .then(querySnapshot => data = querySnapshot.data())
+        .then(() => {
+          dispatch({
             type: 'GET_PRODUCTS',
             payload: data,
           });
@@ -34,7 +54,14 @@ const ProductsState = props => {
   };
 
   return (
-    <ProductsContext.Provider value={{ products: state.products, getProducts }}>
+    <ProductsContext.Provider
+      value={{
+        productsCollection: state.productsCollection,
+        products: state.products,
+        getProducts,
+        getProductsCollection,
+      }}
+    >
       {props.children}
     </ProductsContext.Provider>
   );
