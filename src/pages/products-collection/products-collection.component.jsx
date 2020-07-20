@@ -13,14 +13,14 @@ const ProductsCollectionPage = ({ match }) => {
   console.log(match);
 
   useEffect(() => {
-    getProducts(match.params.type);
+    getProducts(match.params.category);
     // eslint-disable-next-line
   }, []);
   console.log(products);
 
   return (
     <div className="collection-page">
-      <h2 className="title">{match.params.type}</h2>
+      <h2 className="title">{match.params.category}</h2>
       <div className="products-wrapper">
         {products.items.map(item => (
           <ProductItem key={item.id} item={item} />

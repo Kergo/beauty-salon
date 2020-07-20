@@ -9,6 +9,7 @@ import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import ProductsPage from './pages/products/products.component';
 import ProductsCollectionPage from './pages/products-collection/products-collection.component';
+import ProductPreview from './components/product-preview/product-preview.component';
 
 import ProductsState from './contexts/products/products.state';
 import ServicesState from './contexts/services/services.state';
@@ -18,8 +19,8 @@ import ServicesPage from './pages/services/services.component';
 import ServiceOverview from './components/service-overview/service-overview.component';
 
 class App extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       currentUser: null,
@@ -52,7 +53,7 @@ class App extends React.Component {
   componentWillUnmount() {
     this.unsubscribeFromAuth();
   }
-
+  
   render() {
     return (
       <div>
@@ -65,7 +66,8 @@ class App extends React.Component {
             <ProductsState>
               <ServicesState>
                 <Route exact path="/products" component={ProductsPage} />
-                <Route path="/products/:type" component={ProductsCollectionPage} />
+                <Route path="/products/:category/:item" component={ProductPreview} />
+                <Route path="/products/:category" component={ProductsCollectionPage} />
                 <Route exact path="/checkout" component={CheckoutPage} />
                 <Route exact path="/services" component={ServicesPage} />
                 <Route path="/services/:type" component={ServiceOverview} />
