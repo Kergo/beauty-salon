@@ -1,10 +1,11 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import { auth } from '../../firebase/firebase.utils';
 import CartIcon from '../cart-icon/cart-icon.component';
 import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 import CurrentUserContext from '../../contexts/current-user/current-user.context';
+import { CartContext } from '../../contexts/cart/cart.provider';
 
 import { ReactComponent as Logo } from '../../assets/logo-green-small.svg';
 
@@ -12,7 +13,7 @@ import './header.styles.scss';
 
 const Header = () => {
   const currentUser = useContext(CurrentUserContext);
-  let [cartToggle, setCartToggle] = useState(false);
+  const { hidden } = useContext(CartContext);
 
   return (
     <div className="header">
@@ -41,15 +42,9 @@ const Header = () => {
             Sign In
           </Link>
         )}
-        <span
-          onClick={() => {
-            setCartToggle((cartToggle = !cartToggle));
-          }}
-        >
-          <CartIcon />
-        </span>
+        <CartIcon />
       </div>
-      {cartToggle ? <CartDropdown /> : null}
+      {hidden ? null : <CartDropdown />}
     </div>
   );
 };

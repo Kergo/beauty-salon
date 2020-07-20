@@ -8,13 +8,15 @@ import './products.styles.scss';
 const ProductsPage = ({ match }) => {
   const productsContext = useContext(ProductsContext);
   const { products, getProducts } = productsContext;
+  console.log(getProducts);
+  
 
   useEffect(() => {
     getProducts();
     // eslint-disable-next-line
   }, []);
 
-  console.log(match)
+  // console.log(products)
 
   return (
     <div className="products-page">
