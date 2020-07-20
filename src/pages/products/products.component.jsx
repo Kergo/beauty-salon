@@ -7,12 +7,10 @@ import './products.styles.scss';
 
 const ProductsPage = ({ match }) => {
   const productsContext = useContext(ProductsContext);
-  const { products, getProducts } = productsContext;
-  console.log(getProducts);
-  
+  const { productsCollection, getProductsCollection } = productsContext;
 
   useEffect(() => {
-    getProducts();
+    getProductsCollection();
     // eslint-disable-next-line
   }, []);
 
@@ -22,7 +20,7 @@ const ProductsPage = ({ match }) => {
     <div className="products-page">
       {/* <h2 className="title">{title}</h2> */}
       <div className="items">
-        {products.map(item => (
+        {productsCollection.map(item => (
           <ProductsOverview key={item.id} products={item} />
         ))}
       </div>
