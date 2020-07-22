@@ -1,0 +1,50 @@
+.product-preview {
+  width: 80vw;
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+
+  &__image-box {
+    height: 50rem;
+    width: 30%;
+  }
+
+  &__image {
+    width: 100%;
+    height: 95%;
+    background-size: cover;
+    background-position: center;
+  }
+
+  &__info-box {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__description-box {
+    width: 90%;
+    margin: 2rem auto;
+    margin-top: 4rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__description--text {
+    font-size: 1.8rem;
+    width: 70%;
+  }
+
+  &__description--size-price {
+    font-size: 2.4rem;
+    font-weight: bold;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  &__usage {
+      margin: 3rem auto;
+  }
+}
