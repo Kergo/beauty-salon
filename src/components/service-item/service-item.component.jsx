@@ -1,11 +1,12 @@
 import React from 'react';
+import './service-item.styles.scss';
 
 const ServiceItem = ({ name, price }) => {
   return (
-    <div>
-      <p>{name}</p>
-      <p>{price}</p>
-    </div>
+    <tr className='service-item'>
+      <td className='service-item__name'>{name}</td>
+      <td className='service-item__price'>€ {price}</td>
+    </tr>
   );
 };
 

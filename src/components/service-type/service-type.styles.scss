@@ -1,0 +1,14 @@
+.service-type {
+    width: 70vw;
+    margin: 5rem auto;
+
+    &__title {
+        text-align: center;
+        margin: 2rem auto;
+    }
+
+    &__table {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
