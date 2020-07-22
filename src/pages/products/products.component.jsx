@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 
 import ProductsOverview from '../../components/products-overview/products-overview.component';
 import ProductsContext from '../../contexts/products/products.context';
+import ProductUpload from '../../components/product-upload/product-upload.component';
 
 import './products.styles.scss';
 
@@ -24,6 +25,7 @@ const ProductsPage = ({ match }) => {
           <ProductsOverview key={item.id} products={item} />
         ))}
       </div>
+          {/* <ProductUpload /> */}
     </div>
   );
 };
