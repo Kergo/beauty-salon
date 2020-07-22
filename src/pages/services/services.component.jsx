@@ -15,14 +15,14 @@ const ServicesPage = () => {
 
   return (
     <div className="services-wrapper">
-      <div className="services-page-title">
-        <h1 className="title">Services</h1>
-        <p className="description">
+      <div className="services-page">
+        <h1 className="services-page__title">Services</h1>
+        <p className="services-page__description">
           <b>Beauty Salons The Ugly Duckling </b>will help you look great every
           day, every season and every occasion. Through our highly-qualified
           team you will achieve the vision you dreamed of. The most innovative
           face and body appliances, modern techniques, high quality products –
-          rely on the long experience of the The Ugly Duckling beauty salon
+          rely on the long experience of the <b>The Ugly Duckling</b> beauty salon
           team.
         </p>
       </div>
