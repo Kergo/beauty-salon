@@ -6,7 +6,6 @@
   align-items: center;
   position: relative;
   margin: 1.5rem;
-  cursor: pointer;
 
   .image {
     width: 100%;
@@ -24,6 +23,10 @@
     display: none;
   }
 
+  .product-preview-button {
+    display: none;
+  }
+
   &:hover {
     .image {
       opacity: .8;
@@ -32,6 +35,11 @@
     .custom-button {
       opacity: .8;
       display: flex;
+    }
+
+    .product-preview-button {
+      display: flex;
+      opacity: .8;
     }
   }
 

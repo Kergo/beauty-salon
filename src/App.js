@@ -5,6 +5,7 @@ import './App.css';
 
 import HomePage from './pages/homepage/homepage.component';
 import Header from './components/header/header.component';
+import Footer from './components/footer/footer.component';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import ProductsPage from './pages/products/products.component';
@@ -86,6 +87,7 @@ class App extends React.Component {
             </ProductsState>
           </Switch>
         </div>
+          <Footer />
       </div>
     );
   }
