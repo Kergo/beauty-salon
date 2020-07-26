@@ -5,14 +5,17 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import CartProvider from './contexts/cart/cart.provider';
+import WishListProvider from './contexts/wish-list/wish-list.provider';
 
 ReactDOM.render(
   <CartProvider>
-    <BrowserRouter>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
-    </BrowserRouter>
+    <WishListProvider>
+      <BrowserRouter>
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      </BrowserRouter>
+    </WishListProvider>
   </CartProvider>,
   document.getElementById('root')
 );

@@ -2,19 +2,22 @@ import React, { useContext } from 'react';
 import { useHistory, useRouteMatch } from 'react-router-dom';
 
 import CustomButton from '../custom-button/custom-button.component';
-import { CartContext } from '../../contexts/cart/cart.provider';
 import ProductPreviewButton from '../product-preview-button/product-preview-button.component'
+import WishListButton from '../wish-list-button/wish-list-button.component'
+import { CartContext } from '../../contexts/cart/cart.provider';
+import { WishListContext } from '../../contexts/wish-list/wish-list.provider';
 
 import './product-item.styles.scss';
 
 const ProductItem = ({ item }) => {
   let history = useHistory();
   let match = useRouteMatch();
-  console.log(match);
+  // console.log(match);
 
   const { name, imageUrl, price, category } = item;
   const { addItem } = useContext(CartContext);
-  console.log(item);
+  const { addWishItem } = useContext(WishListContext);
+  // console.log(item);
   return (
     <div className="product-item">
       <div
@@ -31,6 +34,7 @@ const ProductItem = ({ item }) => {
         Add to cart
       </CustomButton>
       <ProductPreviewButton item={item}/>
+      <WishListButton item={item} />
     </div>
   );
 };

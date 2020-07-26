@@ -4,20 +4,23 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import './App.css';
 
 import HomePage from './pages/homepage/homepage.component';
+import ProductsPage from './pages/products/products.component';
+import CheckoutPage from './pages/checkout/checkout.component';
+import ServicesPage from './pages/services/services.component';
+import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
+import ProductsCollectionPage from './pages/products-collection/products-collection.component';
+import ContactsPage from './pages/contacts/contacts.component';
+
 import Header from './components/header/header.component';
 import Footer from './components/footer/footer.component';
-import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
-import { auth, createUserProfileDocument } from './firebase/firebase.utils';
-import ProductsPage from './pages/products/products.component';
-import ProductsCollectionPage from './pages/products-collection/products-collection.component';
 import ProductPreview from './components/product-preview/product-preview.component';
+import ServiceOverview from './components/service-overview/service-overview.component';
 
 import ProductsState from './contexts/products/products.state';
 import ServicesState from './contexts/services/services.state';
 import CurrentUserContext from './contexts/current-user/current-user.context';
-import CheckoutPage from './pages/checkout/checkout.component';
-import ServicesPage from './pages/services/services.component';
-import ServiceOverview from './components/service-overview/service-overview.component';
+
+import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 
 class App extends React.Component {
   constructor(props) {
@@ -72,6 +75,7 @@ class App extends React.Component {
                 <Route exact path="/checkout" component={CheckoutPage} />
                 <Route exact path="/services" component={ServicesPage} />
                 <Route path="/services/:type" component={ServiceOverview} />
+                <Route exact path="/contacts" component={ContactsPage} />
                 <Route
                   exact
                   path="/signin"

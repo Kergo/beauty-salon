@@ -17,7 +17,7 @@ const ProductPreviewButton = ({ item }) => {
         }
       }}
     >
-      <i class="fas fa-info-circle fa-2x"></i>
+      <i className="fas fa-info-circle fa-2x"></i>
     </div>
   );
 };
