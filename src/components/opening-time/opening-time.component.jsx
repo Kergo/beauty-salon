@@ -3,7 +3,8 @@ import './opening-time.styles.scss';
 const OpeningTime = () => {
   return (
     <div className="opening-time">
-      <h3>Opening Time</h3>
+      <i className="far fa-clock"></i>
+      <h3 className='opening-time__header'>Opening Hours</h3>
       <table>
         <tbody>
           <tr>
