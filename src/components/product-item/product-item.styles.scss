@@ -27,6 +27,10 @@
     display: none;
   }
 
+  .wish-list-button {
+    display: none;
+  }
+
   &:hover {
     .image {
       opacity: .8;
@@ -38,6 +42,11 @@
     }
 
     .product-preview-button {
+      display: flex;
+      opacity: .8;
+    }
+
+    .wish-list-button {
       display: flex;
       opacity: .8;
     }
