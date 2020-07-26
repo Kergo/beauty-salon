@@ -1,0 +1,25 @@
+.contact-details-wrapper {
+  width: 20rem;
+  .fa-map-marker-alt {
+    margin-left: -4rem;
+  }
+}
+
+.contact-details__header {
+  margin-bottom: 1.2rem;
+  margin-left: 1.4rem;
+  font-size: 2.2rem;
+  display: inline-block;
+}
+
+.contact-details__address {
+  font-size: 1.8rem;
+
+  &--phone {
+    margin-left: 1.2rem;
+  }
+
+  .fa-phone {
+    margin-left: -3rem;
+  }
+}

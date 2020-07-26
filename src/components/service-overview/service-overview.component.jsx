@@ -4,15 +4,10 @@ import ServiceType from '../service-type/service-type.component';
 import ServicesDirectory from '../services-directory/services-directory.component';
 
 const ServiceOverview = ({ match }) => {
-  //   console.log(match.params.type);
-  //   console.log(theOne);
 
   const servicesContext = useContext(ServicesContext);
   const { services, service, getService, getServices } = servicesContext;
 
-  service.map(type => {
-    console.log(type);
-  });
   useEffect(() => {
     getServices();
     getService(match.params.type);

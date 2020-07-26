@@ -1,4 +1,45 @@
-.map-container {
-    height: 30vh;
-    width: 40vw;
+.contacts-page-wrapper {
+  margin-bottom: 6rem;
+
+  .contact-details-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    .contact-details-wrapper {
+    //   margin-top: 4rem;
+    }
+
+    .opening-time {
+        font-size: inherit;
+    }
+    
+    .map-container {
+      height: 50vh;
+      width: 40vw;
+    }
+
+    .link-cta {
+      border: 0;
+      border-radius: 0;
+      padding-bottom: 3px;
+      border-bottom: 2px solid #111;
+
+      background: 0 none;
+      font-family: 'Interstate Condensed';
+      text-transform: uppercase;
+      text-decoration: none;
+      display: inline;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      font-style: normal;
+    }
+
+    *,
+    :after,
+    :before {
+      color: #111;
+      box-sizing: inherit;
+    }
+  }
 }
