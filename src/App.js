@@ -10,6 +10,7 @@ import ServicesPage from './pages/services/services.component';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 import ProductsCollectionPage from './pages/products-collection/products-collection.component';
 import ContactsPage from './pages/contacts/contacts.component';
+import WishListPage from './pages/wish-list/wish-list.component';
 
 import Header from './components/header/header.component';
 import Footer from './components/footer/footer.component';
@@ -76,6 +77,7 @@ class App extends React.Component {
                 <Route exact path="/services" component={ServicesPage} />
                 <Route path="/services/:type" component={ServiceOverview} />
                 <Route exact path="/contacts" component={ContactsPage} />
+                <Route exact path="/wish-list" component={WishListPage} />
                 <Route
                   exact
                   path="/signin"

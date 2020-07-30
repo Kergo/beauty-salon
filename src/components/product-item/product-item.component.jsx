@@ -1,23 +1,19 @@
 import React, { useContext } from 'react';
-import { useHistory, useRouteMatch } from 'react-router-dom';
 
 import CustomButton from '../custom-button/custom-button.component';
-import ProductPreviewButton from '../product-preview-button/product-preview-button.component'
-import WishListButton from '../wish-list-button/wish-list-button.component'
+import ProductPreviewButton from '../product-preview-button/product-preview-button.component';
+import WishListButton from '../wish-list-button/wish-list-button.component';
 import { CartContext } from '../../contexts/cart/cart.provider';
 import { WishListContext } from '../../contexts/wish-list/wish-list.provider';
 
 import './product-item.styles.scss';
 
 const ProductItem = ({ item }) => {
-  let history = useHistory();
-  let match = useRouteMatch();
-  // console.log(match);
 
-  const { name, imageUrl, price, category } = item;
+  const { name, imageUrl, price } = item;
   const { addItem } = useContext(CartContext);
   const { addWishItem } = useContext(WishListContext);
-  // console.log(item);
+
   return (
     <div className="product-item">
       <div
@@ -33,8 +29,8 @@ const ProductItem = ({ item }) => {
       <CustomButton onClick={() => addItem(item)} inverted>
         Add to cart
       </CustomButton>
-      <ProductPreviewButton item={item}/>
-      <WishListButton item={item} />
+      <ProductPreviewButton item={item} />
+      <WishListButton onClick={() => addWishItem(item)} />
     </div>
   );
 };
