@@ -36,7 +36,6 @@ const CartProvider = ({ children }) => {
     setCartTotal(getCartTotal(cartItems));
     localStorage.setItem('cartItems', JSON.stringify(cartItems))
   }, [cartItems]);
-
   return (
     <CartContext.Provider
       value={{

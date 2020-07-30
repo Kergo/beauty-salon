@@ -43,6 +43,9 @@ const Header = () => {
           </Link>
         )}
         <CartIcon />
+        <Link to="/wish-list">
+          <i className={'far fa-heart fa-2x'}></i>
+        </Link>
       </div>
       {hidden ? null : <CartDropdown />}
     </div>

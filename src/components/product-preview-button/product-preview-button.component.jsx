@@ -11,7 +11,7 @@ const ProductPreviewButton = ({ item }) => {
     <div className='product-preview-button'
       onClick={() => {
         if (!match.params.category) {
-          history.push(`${match.url}/${category}/${name}`);
+          history.push(`products/${category}/${name}`);
         } else {
           history.push(`${match.url}/${name}`);
         }
