@@ -28,6 +28,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
     // retrieve user information from the firebase snapshot
     const { displayName, email } = userAuth;
     const createdAt = new Date();
+    const purchasedProducts = [];
 
     // If there is no document for the user we will create a new object (document)
     try {
@@ -35,6 +36,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
         displayName,
         email,
         createdAt,
+        purchasedProducts,
         ...additionalData,
       });
     } catch (error) {
@@ -45,9 +47,31 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   return userRef;
 };
 
-export const changeUserPassword = async (user, newPassword) => {
-  
-}
+export const createUserPurchasedProduct = async (currentUser, product) => {
+  if (!currentUser) return;
+
+  const userRef = firestore.doc(`users/${currentUser.id}`);
+  const snapShot = await userRef.get();
+  try {
+    const createdAt = new Date();
+    const deliverd = false;
+    let lastId = snapShot.data().purchasedProducts.length;
+    let id = lastId++;
+    const data = {
+      createdAt,
+      id,
+      deliverd,
+      ...product,
+    };
+    userRef.update({
+      purchasedProducts: firebase.firestore.FieldValue.arrayUnion(data),
+    });
+  } catch (error) {
+    console.error('Error creating Purchased Product Document', error.message);
+  }
+};
+
+export const changeUserPassword = async (user, newPassword) => {};
 
 export const getProductsDocuments = async docRef => {
   const productsRef = firestore.collection('products').doc(docRef);

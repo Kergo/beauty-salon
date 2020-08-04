@@ -30,6 +30,7 @@ const CartProvider = ({ children }) => {
   const toggleHidden = () => setHidden(!hidden);
   const clearItemFromCart = item =>
     setCartItems(filterItemFromCart(cartItems, item));
+  const clearAllItemsFromCart = () => setCartItems([])  
 
   useEffect(() => {
     setCartItemsCount(getCartItemsCount(cartItems));
@@ -46,7 +47,8 @@ const CartProvider = ({ children }) => {
         removeItem,
         clearItemFromCart,
         cartItemsCount,
-        cartTotal
+        cartTotal,
+        clearAllItemsFromCart
       }}
     >
       {children}
