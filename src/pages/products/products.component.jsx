@@ -1,33 +1,37 @@
 import React, { useContext, useEffect } from 'react';
 
 import ProductsOverview from '../../components/products-overview/products-overview.component';
+import Spinner from '../../components/spinner/spinner.component';
 import ProductsContext from '../../contexts/products/products.context';
-// import ProductUpload from '../../components/product-upload/product-upload.component';
 
 import './products.styles.scss';
 
-const ProductsPage = ({ match }) => {
+const ProductsPage = () => {
   const productsContext = useContext(ProductsContext);
-  const { productsCollection, getProductsCollection } = productsContext;
+  const {
+    loading,
+    productsCollection,
+    getProductsCollection,
+  } = productsContext;
 
   useEffect(() => {
     getProductsCollection();
     // eslint-disable-next-line
   }, []);
 
-  // console.log(products)
-
-  return (
-    <div className="products-page">
-      {/* <h2 className="title">{title}</h2> */}
-      <div className="items">
-        {productsCollection.map(item => (
-          <ProductsOverview key={item.id} products={item} />
-        ))}
+  if (loading) {
+    return <Spinner />;
+  } else {
+    return (
+      <div className="products-page">
+        <div className="items">
+          {productsCollection.map(item => (
+            <ProductsOverview key={item.id} products={item} />
+          ))}
+        </div>
       </div>
-          {/* <ProductUpload /> */}
-    </div>
-  );
+    );
+  }
 };
 
 export default ProductsPage;
