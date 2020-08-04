@@ -28,7 +28,7 @@ class ProductUpload extends Component {
       category: 'face',
       gender: 'men',
     };
-  }
+  }  
 
   handleSubmit = async e => {
     e.preventDefault();
@@ -42,7 +42,7 @@ class ProductUpload extends Component {
       productStorage,
       category,
       gender,
-      size
+      size,
     } = this.state;
 
     if (image) {
@@ -74,7 +74,24 @@ class ProductUpload extends Component {
                   size: Number(size),
                   imageUrl,
                 });
-              });
+              })
+              .then(() =>
+                this.setState({
+                  image: null,
+                  imageUrl: '',
+                  progress: 0,
+                  error: '',
+                  name: '',
+                  price: '',
+                  description: '',
+                  ingredients: '',
+                  usage: '',
+                  productStorage: '',
+                  size: '',
+                  category: 'face',
+                  gender: 'men',
+                })
+              );
           }
         );
       } catch (error) {
@@ -117,6 +134,8 @@ class ProductUpload extends Component {
       category,
       gender,
     } = this.state;
+    console.log(this.props);
+    
     return (
       <div className="product-upload">
         <h2 className="title">Add Product</h2>
@@ -216,7 +235,7 @@ class ProductUpload extends Component {
       {this.state.progress > 0 ? <progress value={this.stateprogress} max="100" /> : ''}
       <p>{this.stateerror}</p>
       </div> */}
-    {/* {this.state.url ? <img src={this.state.url} alt=''/> : ''} */}
+        {/* {this.state.url ? <img src={this.state.url} alt=''/> : ''} */}
       </div>
     );
   }
