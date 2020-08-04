@@ -13,7 +13,7 @@ import './header.styles.scss';
 
 const Header = () => {
   const currentUser = useContext(CurrentUserContext);
-  const { hidden } = useContext(CartContext);
+  const { hidden } = useContext(CartContext);  
 
   return (
     <div className="header">
@@ -46,6 +46,13 @@ const Header = () => {
         <Link to="/wish-list">
           <i className={'far fa-heart fa-2x'}></i>
         </Link>
+        {currentUser && currentUser.role === 'admin' ? (
+          <Link className="option" to='/dashboard'>
+            Dashboard
+          </Link>
+        ) : (
+          null
+        )}
       </div>
       {hidden ? null : <CartDropdown />}
     </div>

@@ -11,6 +11,8 @@ import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up
 import ProductsCollectionPage from './pages/products-collection/products-collection.component';
 import ContactsPage from './pages/contacts/contacts.component';
 import WishListPage from './pages/wish-list/wish-list.component';
+import DashboardPage from './pages/dashboard/dashboard.component';
+import ProfilePage from './pages/profile/profile.component';
 
 import Header from './components/header/header.component';
 import Footer from './components/footer/footer.component';
@@ -28,7 +30,10 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      currentUser: null,
+      currentUser: {
+        email: '',
+        displayName: '',
+      },
     };
   }
   unsubscribeFromAuth = null;
@@ -58,43 +63,61 @@ class App extends React.Component {
   componentWillUnmount() {
     this.unsubscribeFromAuth();
   }
-  
+
   render() {
     return (
-      <div>
-        <CurrentUserContext.Provider value={this.state.currentUser}>
+      <CurrentUserContext.Provider value={this.state.currentUser}>
+        <div>
           <Header />
-        </CurrentUserContext.Provider>
-        <div className="wrapper">
-          <Switch>
-            <Route exact path="/" component={HomePage} />
-            <ProductsState>
-              <ServicesState>
-                <Route exact path="/products" component={ProductsPage} />
-                <Route path="/products/:category/:item" component={ProductPreview} />
-                <Route path="/products/:category" component={ProductsCollectionPage} />
-                <Route exact path="/checkout" component={CheckoutPage} />
-                <Route exact path="/services" component={ServicesPage} />
-                <Route path="/services/:type" component={ServiceOverview} />
-                <Route exact path="/contacts" component={ContactsPage} />
-                <Route exact path="/wish-list" component={WishListPage} />
-                <Route
-                  exact
-                  path="/signin"
-                  render={() =>
-                    this.state.currentUser ? (
-                      <Redirect to="/" />
-                    ) : (
-                      <SignInAndSignUpPage />
-                    )
-                  }
-                />
-              </ServicesState>
-            </ProductsState>
-          </Switch>
-        </div>
+          <div className="wrapper">
+            <Switch>
+              <Route exact path="/" component={HomePage} />
+              <ProductsState>
+                <ServicesState>
+                  <Route exact path="/products" component={ProductsPage} />
+                  <Route
+                    path="/products/:category/:item"
+                    component={ProductPreview}
+                  />
+                  <Route
+                    path="/products/:category"
+                    component={ProductsCollectionPage}
+                  />
+                  <Route exact path="/checkout" component={CheckoutPage} />
+                  <Route exact path="/services" component={ServicesPage} />
+                  <Route path="/services/:type" component={ServiceOverview} />
+                  <Route exact path="/contacts" component={ContactsPage} />
+                  <Route exact path="/wish-list" component={WishListPage} />
+                  <Route exact path="/profile" component={ProfilePage} />
+                  <Route
+                    exact
+                    path="/dashboard"
+                    render={() =>
+                      this.state.currentUser.role === 'admin' ? (
+                        <DashboardPage />
+                      ) : (
+                        <Redirect to="/" />
+                      )
+                    }
+                  />
+                  <Route
+                    exact
+                    path="/signin"
+                    render={() =>
+                      this.state.currentUser ? (
+                        <Redirect to="/" />
+                      ) : (
+                        <SignInAndSignUpPage />
+                      )
+                    }
+                  />
+                </ServicesState>
+              </ProductsState>
+            </Switch>
+          </div>
           <Footer />
-      </div>
+        </div>
+      </CurrentUserContext.Provider>
     );
   }
 }

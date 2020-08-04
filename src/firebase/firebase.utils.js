@@ -45,6 +45,10 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   return userRef;
 };
 
+export const changeUserPassword = async (user, newPassword) => {
+  
+}
+
 export const getProductsDocuments = async docRef => {
   const productsRef = firestore.collection('products').doc(docRef);
   const productsDoc = await productsRef.get();
