@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { WishListContext } from '../../contexts/wish-list/wish-list.provider';
 
 import './wish-list-button.styles.scss';
@@ -6,8 +6,8 @@ import './wish-list-button.styles.scss';
 const WishListButton = item => {
   const { wished, toggleWished } = useContext(WishListContext);
 
-  const [hovered, setHovered] = useState(false);
-  const toggleHover = () => setHovered(!hovered);
+  // const [hovered, setHovered] = useState(false);
+  // const toggleHover = () => setHovered(!hovered);
 
   return (
     <i

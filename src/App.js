@@ -88,7 +88,7 @@ class App extends React.Component {
                   <Route path="/services/:type" component={ServiceOverview} />
                   <Route exact path="/contacts" component={ContactsPage} />
                   <Route exact path="/wish-list" component={WishListPage} />
-                  <Route exact path="/profile" component={ProfilePage} />
+                  <Route path="/profile" component={ProfilePage} />
                   <Route
                     exact
                     path="/dashboard"

@@ -1,0 +1,7 @@
+.ordered {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px black dotted;
+    margin-bottom: 2rem;
+}
