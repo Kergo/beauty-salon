@@ -160,6 +160,19 @@ export const getPlasticForChangeCollection = async () => {
   return data;
 }
 
+export const getHomepageCollection = async () => {
+  let data = [];
+  await firestore
+    .collection('homepage')
+    .get()
+    .then(querySnapshot => {
+      querySnapshot.forEach(doc => {
+        data.push(doc.data())
+      });
+    });
+  return data;
+}
+
 firebase.initializeApp(config);
 
 export const auth = firebase.auth();
