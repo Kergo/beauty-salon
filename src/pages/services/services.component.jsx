@@ -13,7 +13,7 @@ const ServicesPage = () => {
     getServices();
     // eslint-disable-next-line
   }, []);
-
+  //Error handling needed if services is empty
   if (loading) {
     return <Spinner />;
   } else {

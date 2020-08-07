@@ -13,6 +13,7 @@ import ContactsPage from './pages/contacts/contacts.component';
 import WishListPage from './pages/wish-list/wish-list.component';
 import DashboardPage from './pages/dashboard/dashboard.component';
 import ProfilePage from './pages/profile/profile.component';
+import PlasticForChangePage from './pages/plastic-for-change/plastic-for-change.component';
 
 import Header from './components/header/header.component';
 import Footer from './components/footer/footer.component';
@@ -89,6 +90,10 @@ class App extends React.Component {
                   <Route exact path="/contacts" component={ContactsPage} />
                   <Route exact path="/wish-list" component={WishListPage} />
                   <Route path="/profile" component={ProfilePage} />
+                  <Route
+                    exact path="/plastic-for-change"
+                    component={PlasticForChangePage}
+                  />
                   <Route
                     exact
                     path="/dashboard"

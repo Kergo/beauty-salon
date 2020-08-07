@@ -15,7 +15,7 @@ const ProductsCollectionPage = ({ match }) => {
     getProducts(match.params.category);
     // eslint-disable-next-line
   }, []);
-
+  //Error handling needed if products are empty
   if (loading) {
     return <Spinner />;
   } else {
