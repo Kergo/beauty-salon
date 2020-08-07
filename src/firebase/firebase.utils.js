@@ -147,6 +147,19 @@ export const createProductDocument = async props => {
   }
 };
 
+export const getPlasticForChangeCollection = async () => {
+  let data = [];
+  await firestore
+    .collection('plastic-for-change-text')
+    .get()
+    .then(querySnapshot => {
+      querySnapshot.forEach(doc => {
+        data.push(doc.data())
+      });
+    });
+  return data;
+}
+
 firebase.initializeApp(config);
 
 export const auth = firebase.auth();
