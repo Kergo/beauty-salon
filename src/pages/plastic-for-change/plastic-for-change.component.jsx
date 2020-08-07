@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './plastic-for-change.module.css';
 import { getPlasticForChangeCollection } from '../../firebase/firebase.utils';
-import PlasticForChangeInfo from '../../components/plastic-for-change-info/plastic-for-change-info.component';
+import InfoContainer from '../../components/info-container/info-container.component';
 
 const PlasticForChangePage = () => {
   const [data, setData] = useState([]);
@@ -29,7 +29,7 @@ const PlasticForChangePage = () => {
         </h4>
       </div>
       {data.map((info, idx) => {          
-          return <PlasticForChangeInfo key={idx} info={info}/>
+          return <InfoContainer key={idx} info={info}/>
       })}
     </div>
   );
