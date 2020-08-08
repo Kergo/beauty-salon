@@ -19,6 +19,7 @@ import Header from './components/header/header.component';
 import Footer from './components/footer/footer.component';
 import ProductPreview from './components/product-preview/product-preview.component';
 import ServiceOverview from './components/service-overview/service-overview.component';
+import AppointmentPopup from './components/appointment-popup/appointment-popup.component';
 
 import ProductsState from './contexts/products/products.state';
 import ServicesState from './contexts/services/services.state';
@@ -72,9 +73,9 @@ class App extends React.Component {
           <Header />
           <div className="wrapper">
             <Switch>
-              <Route exact path="/" component={HomePage} />
               <ProductsState>
                 <ServicesState>
+              <Route exact path="/" component={HomePage} />
                   <Route exact path="/products" component={ProductsPage} />
                   <Route
                     path="/products/:category/:item"
@@ -94,6 +95,7 @@ class App extends React.Component {
                     exact path="/plastic-for-change"
                     component={PlasticForChangePage}
                   />
+                  <Route path='/appointment' component={AppointmentPopup} />
                   <Route
                     exact
                     path="/dashboard"

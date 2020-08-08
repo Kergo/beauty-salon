@@ -4,6 +4,7 @@ import ServicesContext from '../../contexts/services/services.context';
 import Spinner from '../../components/spinner/spinner.component';
 
 import './services.styles.scss';
+import ServicesAppointmentInfo from '../../components/services-appointment-info/services-appointment-info.component';
 
 const ServicesPage = () => {
   const servicesContext = useContext(ServicesContext);
@@ -20,7 +21,7 @@ const ServicesPage = () => {
     return (
       <div className="services-wrapper">
         <div className="services-page">
-          <h1 className="services-page__title">Services</h1>
+          {/* <h1 className="services-page__title">Services</h1> */}
           <p className="services-page__description">
             <b>Beauty Salons The Ugly Duckling </b>will help you look great
             every day, every season and every occasion. Through our
@@ -40,6 +41,7 @@ const ServicesPage = () => {
             />
           ))}
         </div>
+        <ServicesAppointmentInfo />
       </div>
     );
   }
