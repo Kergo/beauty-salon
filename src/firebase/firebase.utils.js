@@ -60,7 +60,7 @@ export const createUserPurchasedProduct = async (
   const snapShot = await userRef.get();
   try {
     const createdAt = new Date();
-    const deliverd = false;
+    const delivered = false;
     let lastId = snapShot.data().purchasedProducts.length;
     let lastTotalPoints = snapShot.data().totalPoints;
     let id = lastId++;
@@ -69,7 +69,7 @@ export const createUserPurchasedProduct = async (
     const data = {
       createdAt,
       id,
-      deliverd,
+      delivered,
       totalAmount,
       points,
       ...product,
