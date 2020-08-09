@@ -33,7 +33,7 @@ const CheckoutPage = () => {
       {cartItems.map(cartItem => (
         <CheckoutItem key={cartItem.id} cartItem={cartItem} />
       ))}
-      <div className='total'>TOTAL: €{cartTotal}</div>
+      <div className='total'>TOTAL: €{Math.round(cartTotal * 100) / 100}</div>
       <div className='test-warning'>
     *Please use the following test credit card for payments* 
     <br />
