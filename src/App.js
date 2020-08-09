@@ -13,11 +13,14 @@ import ContactsPage from './pages/contacts/contacts.component';
 import WishListPage from './pages/wish-list/wish-list.component';
 import DashboardPage from './pages/dashboard/dashboard.component';
 import ProfilePage from './pages/profile/profile.component';
+import PlasticForChangePage from './pages/plastic-for-change/plastic-for-change.component';
+import OrderCompletedPage from './pages/order-completed/order-completed.component';
 
 import Header from './components/header/header.component';
 import Footer from './components/footer/footer.component';
 import ProductPreview from './components/product-preview/product-preview.component';
 import ServiceOverview from './components/service-overview/service-overview.component';
+import AppointmentPopup from './components/appointment-popup/appointment-popup.component';
 
 import ProductsState from './contexts/products/products.state';
 import ServicesState from './contexts/services/services.state';
@@ -71,9 +74,9 @@ class App extends React.Component {
           <Header />
           <div className="wrapper">
             <Switch>
-              <Route exact path="/" component={HomePage} />
               <ProductsState>
                 <ServicesState>
+              <Route exact path="/" component={HomePage} />
                   <Route exact path="/products" component={ProductsPage} />
                   <Route
                     path="/products/:category/:item"
@@ -89,6 +92,12 @@ class App extends React.Component {
                   <Route exact path="/contacts" component={ContactsPage} />
                   <Route exact path="/wish-list" component={WishListPage} />
                   <Route path="/profile" component={ProfilePage} />
+                  <Route
+                    exact path="/plastic-for-change"
+                    component={PlasticForChangePage}
+                  />
+                  <Route path='/appointment' component={AppointmentPopup} />
+                  <Route path='/order-completed' component={OrderCompletedPage} />
                   <Route
                     exact
                     path="/dashboard"

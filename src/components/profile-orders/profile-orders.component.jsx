@@ -18,15 +18,9 @@ const ProfileOrders = () => {
   if (orders) {
     return (
       <div className={styles['wrapper']}>
-        <h1 className={styles['title']}>Pending Orders</h1>
+        <h1 className={styles['title']}>Orders</h1>
         {orders.map(order => {
-          if (!order.deliverd) return <ProfileOrderOverview key={order.id} order={order} />;
-        })}
-        <h1 className={styles['title']}>Delivered Orders</h1>
-        {orders.map(order => {
-          if (order.deliverd) {
-            return <ProfileOrderOverview key={order.id} order={order} />;
-          }
+          return <ProfileOrderOverview key={order.id} order={order} />;
         })}
       </div>
     );

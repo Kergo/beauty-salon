@@ -29,6 +29,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
     const { displayName, email } = userAuth;
     const createdAt = new Date();
     const purchasedProducts = [];
+    const totalPoints = 0;
 
     // If there is no document for the user we will create a new object (document)
     try {
@@ -37,6 +38,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
         email,
         createdAt,
         purchasedProducts,
+        totalPoints,
         ...additionalData,
       });
     } catch (error) {
@@ -47,31 +49,39 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   return userRef;
 };
 
-export const createUserPurchasedProduct = async (currentUser, product) => {
+export const createUserPurchasedProduct = async (
+  currentUser,
+  product,
+  totalAmount
+) => {
   if (!currentUser) return;
 
   const userRef = firestore.doc(`users/${currentUser.id}`);
   const snapShot = await userRef.get();
   try {
     const createdAt = new Date();
-    const deliverd = false;
+    const delivered = false;
     let lastId = snapShot.data().purchasedProducts.length;
+    let lastTotalPoints = snapShot.data().totalPoints;
     let id = lastId++;
+    let points = Math.round(totalAmount * 0.1);
+    let newTotalPoints = lastTotalPoints + points;
     const data = {
       createdAt,
       id,
-      deliverd,
+      delivered,
+      totalAmount,
+      points,
       ...product,
     };
     userRef.update({
       purchasedProducts: firebase.firestore.FieldValue.arrayUnion(data),
+      totalPoints: newTotalPoints,
     });
   } catch (error) {
     console.error('Error creating Purchased Product Document', error.message);
   }
 };
-
-export const changeUserPassword = async (user, newPassword) => {};
 
 export const getProductsDocuments = async docRef => {
   const productsRef = firestore.collection('products').doc(docRef);
@@ -145,6 +155,32 @@ export const createProductDocument = async props => {
   } catch (error) {
     console.error('Error creating product', error.message);
   }
+};
+
+export const getPlasticForChangeCollection = async () => {
+  let data = [];
+  await firestore
+    .collection('plastic-for-change-text')
+    .get()
+    .then(querySnapshot => {
+      querySnapshot.forEach(doc => {
+        data.push(doc.data());
+      });
+    });
+  return data;
+};
+
+export const getHomepageCollection = async () => {
+  let data = [];
+  await firestore
+    .collection('homepage')
+    .get()
+    .then(querySnapshot => {
+      querySnapshot.forEach(doc => {
+        data.push(doc.data());
+      });
+    });
+  return data;
 };
 
 firebase.initializeApp(config);

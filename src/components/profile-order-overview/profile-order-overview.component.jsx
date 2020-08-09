@@ -2,17 +2,35 @@ import React from 'react';
 import styles from './profile-order-overview.module.css';
 
 const ProfileOrderOverview = ({ order }) => {
-
   let timestamp = order.createdAt;
   let myDate = timestamp.toDate().getDate();
   let myMonth = timestamp.toDate().getMonth();
   let myYear = timestamp.toDate().getFullYear();
   let formated = `${myDate}-${myMonth}-${myYear}`;
-
+  
   return (
     <div className={styles['ordered']}>
-      <h4>Order Number: {order.id}</h4>
-      <h4>Date of order: {formated}</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Order Number</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>{order.id}</th>
+            <th>{!order.delivered ? 'In progress' : 'completed'}</th>
+            <th>{formated}</th>
+            <th>€{Math.round(order.totalAmount * 100) / 100}</th>
+          </tr>
+        </tbody>
+      </table>
+      {/* <h4>Order Number: {order.id}</h4>
+      <h4>Total Amount: €{order.totalAmount}</h4>
+      <h4>Date of order: {formated}</h4> */}
     </div>
   );
 };
