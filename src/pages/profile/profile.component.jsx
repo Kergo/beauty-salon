@@ -9,6 +9,7 @@ import styles from './profile.module.css';
 import { Switch, Route } from 'react-router-dom';
 import CustomButton from '../../components/custom-button/custom-button.component';
 import ProfileOverview from '../../components/profile-overview/profile-overview.component';
+import ProfileSettings from '../../components/profile-settings/profile-settings.component';
 
 const ProfilePage = () => {
   const [userName, setUserName] = useState('');
@@ -52,6 +53,7 @@ const ProfilePage = () => {
         <Switch>
           <Route exact path="/profile" component={ProfileOverview} />
           <Route path="/profile/orders" component={ProfileOrders} />
+          <Route path="/profile/settings" component={ProfileSettings} />
         </Switch>
 
         {/* <CustomButton onClick={() => sendResetPasswordEmail(currentUser.email)}>Reset Password</CustomButton> */}
