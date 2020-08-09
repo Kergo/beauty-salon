@@ -8,6 +8,13 @@ const ProfileNav = () => {
 
   return (
     <div className={styles['profile-nav-wrapper']}>
+            <div className={styles['option']}
+        onClick={() => {
+          history.push(`/profile`);
+        }}
+      >
+        My Account
+      </div>
       <div className={styles['option']}
         onClick={() => {
           history.push(`${match.url}/settings`);

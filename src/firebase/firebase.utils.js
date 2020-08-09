@@ -102,7 +102,7 @@ export const createUserPurchasedProduct = async (
 export const getProductsDocuments = async docRef => {
   const productsRef = firestore.collection('products').doc(docRef);
   const productsDoc = await productsRef.get();
-  console.log('Document data:', productsDoc.data());
+  // console.log('Document data:', productsDoc.data());
   return productsDoc;
 };
 
@@ -197,6 +197,14 @@ export const getHomepageCollection = async () => {
       });
     });
   return data;
+};
+
+export const getHomepagePartOfTheStoryDocument = async () => {
+
+  const docRef = firestore.collection('homepage').doc('5Vve2OrIVFcKaLWaPMvK');
+  const doc = await docRef.get();
+  // console.log('Document data:', doc.data());
+  return doc.data();
 };
 
 firebase.initializeApp(config);

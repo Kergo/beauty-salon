@@ -15,7 +15,7 @@ const ProfileOrders = () => {
   }, [currentUser]);
   let history = useHistory();
 
-  if (orders) {
+  if (orders && orders.length) {
     return (
       <div className={styles['wrapper']}>
         <h1 className={styles['title']}>Orders</h1>
@@ -26,7 +26,7 @@ const ProfileOrders = () => {
     );
   } else {
     return (
-      <div>
+      <div className={styles['wrapper-no-orders']}>
         <h1>Ah so pity you haven't order anything by us yet...</h1>
         <h3>Don't wait and check out our exclusive collection</h3>
         <CustomButton
