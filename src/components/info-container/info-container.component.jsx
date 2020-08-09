@@ -1,7 +1,7 @@
 import React from 'react';
 import InfoParagraph from '../info-paragraph/info-paragraph.component';
 import CustomButton from '../custom-button/custom-button.component';
-import {useHistory} from 'react-router-dom';
+import {useHistory, Link, Redirect} from 'react-router-dom';
 import styles from './info-container.module.css';
 
 const InfoContainer = ({ info }) => {
@@ -22,7 +22,8 @@ const InfoContainer = ({ info }) => {
           })}
         </div>
       </div>
-        {btn ? <CustomButton onClick={() => history.push(`/${btn.url}`)}>{btn.text}</CustomButton> : null}
+        {btn ? <CustomButton onClick={() => history.replace(`/${btn.url}`)}>{btn.text}</CustomButton> : null}
+        {/* {btn ? <CustomButton onClick={() => <Redirect to="/" />}>{btn.text}</CustomButton> : null} */}
     </div>
   );
 };

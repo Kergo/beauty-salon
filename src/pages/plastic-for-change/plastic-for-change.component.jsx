@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from "react-router-dom";
 import styles from './plastic-for-change.module.css';
 import { getPlasticForChangeCollection } from '../../firebase/firebase.utils';
 import InfoContainer from '../../components/info-container/info-container.component';
 
 const PlasticForChangePage = () => {
   const [data, setData] = useState([]);
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   useEffect(() => {
     async function fetchData() {

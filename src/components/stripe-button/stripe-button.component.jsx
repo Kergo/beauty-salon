@@ -17,7 +17,7 @@ const StripeCheckoutButton = ({ price }) => {
     console.log(token);
     alert('Payment Successful');
     clearAllItemsFromCart();
-    createUserPurchasedProduct(currentUser, cartItems);
+    createUserPurchasedProduct(currentUser, cartItems, price);
   };
 
   return (
