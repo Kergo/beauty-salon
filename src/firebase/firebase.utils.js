@@ -49,7 +49,11 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   return userRef;
 };
 
-export const createUserPurchasedProduct = async (currentUser, product, totalAmount) => {
+export const createUserPurchasedProduct = async (
+  currentUser,
+  product,
+  totalAmount
+) => {
   if (!currentUser) return;
 
   const userRef = firestore.doc(`users/${currentUser.id}`);
@@ -60,7 +64,7 @@ export const createUserPurchasedProduct = async (currentUser, product, totalAmou
     let lastId = snapShot.data().purchasedProducts.length;
     let lastTotalPoints = snapShot.data().totalPoints;
     let id = lastId++;
-    let points = Math.round(totalAmount * .1);
+    let points = Math.round(totalAmount * 0.1);
     let newTotalPoints = lastTotalPoints + points;
     const data = {
       createdAt,
@@ -72,14 +76,12 @@ export const createUserPurchasedProduct = async (currentUser, product, totalAmou
     };
     userRef.update({
       purchasedProducts: firebase.firestore.FieldValue.arrayUnion(data),
-      totalPoints: newTotalPoints
+      totalPoints: newTotalPoints,
     });
   } catch (error) {
     console.error('Error creating Purchased Product Document', error.message);
   }
 };
-
-export const changeUserPassword = async (user, newPassword) => {};
 
 export const getProductsDocuments = async docRef => {
   const productsRef = firestore.collection('products').doc(docRef);
@@ -162,11 +164,11 @@ export const getPlasticForChangeCollection = async () => {
     .get()
     .then(querySnapshot => {
       querySnapshot.forEach(doc => {
-        data.push(doc.data())
+        data.push(doc.data());
       });
     });
   return data;
-}
+};
 
 export const getHomepageCollection = async () => {
   let data = [];
@@ -175,11 +177,11 @@ export const getHomepageCollection = async () => {
     .get()
     .then(querySnapshot => {
       querySnapshot.forEach(doc => {
-        data.push(doc.data())
+        data.push(doc.data());
       });
     });
   return data;
-}
+};
 
 firebase.initializeApp(config);
 

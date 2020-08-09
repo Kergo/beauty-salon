@@ -14,6 +14,7 @@ import WishListPage from './pages/wish-list/wish-list.component';
 import DashboardPage from './pages/dashboard/dashboard.component';
 import ProfilePage from './pages/profile/profile.component';
 import PlasticForChangePage from './pages/plastic-for-change/plastic-for-change.component';
+import OrderCompletedPage from './pages/order-completed/order-completed.component';
 
 import Header from './components/header/header.component';
 import Footer from './components/footer/footer.component';
@@ -96,6 +97,7 @@ class App extends React.Component {
                     component={PlasticForChangePage}
                   />
                   <Route path='/appointment' component={AppointmentPopup} />
+                  <Route path='/order-completed' component={OrderCompletedPage} />
                   <Route
                     exact
                     path="/dashboard"
