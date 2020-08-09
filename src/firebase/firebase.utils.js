@@ -49,6 +49,19 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   return userRef;
 };
 
+export const updateUserProfile = async (currentUser, additionalData) => {
+  if (!currentUser) return;
+  const userRef = firestore.doc(`users/${currentUser.id}`);
+  // const snapShot = await userRef.get();
+  try {
+    userRef.update({
+      ...additionalData,
+    });
+  } catch (error) {
+    console.error('Error Updating User Document', error.message);
+  }
+};
+
 export const sendResetPasswordEmail = email => {
   let auth = firebase.auth();
 
@@ -61,7 +74,6 @@ export const sendResetPasswordEmail = email => {
     .catch(function (error) {
       // An error happened.
       console.log(error);
-      
     });
 };
 
@@ -200,7 +212,6 @@ export const getHomepageCollection = async () => {
 };
 
 export const getHomepagePartOfTheStoryDocument = async () => {
-
   const docRef = firestore.collection('homepage').doc('5Vve2OrIVFcKaLWaPMvK');
   const doc = await docRef.get();
   // console.log('Document data:', doc.data());
