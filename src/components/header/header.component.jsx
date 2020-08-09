@@ -48,8 +48,13 @@ const Header = () => {
             Sign In
           </Link>
         )}
-        <CartIcon />
-        <Link to="/wish-list">
+        </div>
+        <div className="options">
+        <Link to="/profile" className='second-option'>
+          <i className="far fa-user fa-2x"></i>
+        </Link>
+        <CartIcon className='second-option' />
+        <Link to="/wish-list" className='second-option'>
           <i className={'far fa-heart fa-2x'}></i>
         </Link>
         {currentUser && currentUser.role === 'admin' ? (

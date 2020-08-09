@@ -58,6 +58,8 @@ class AppointmentPopup extends React.Component {
           </div>
           <div className="popup__content--form">
             <form>
+              <div className="popup__content--form-body">
+
               <FormInput
                 id="name"
                 type="text"
@@ -75,6 +77,9 @@ class AppointmentPopup extends React.Component {
                 handleChange={this.handleChange}
                 required
               />
+              </div>
+              <div className="popup__content--form-body">
+
               <FormInput
                 type="email"
                 name="email"
@@ -86,11 +91,12 @@ class AppointmentPopup extends React.Component {
               <FormInput
                 type="text"
                 name="type"
-                label="I would like to make an appointment"
+                label="I would like to make an appointment for:"
                 value={this.state.type}
                 handleChange={this.handleChange}
                 required
               />
+              </div>
               <div className="popup__content--form-footer">
                 <DatePicker
                   selected={this.state.startDate}
