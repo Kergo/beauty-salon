@@ -26,6 +26,7 @@ const HomePage = () => {
     getServices();
     // eslint-disable-next-line
   }, []);
+  
   return (
     <div>
       {/* <h1>Love Your Body!</h1>

@@ -13,5 +13,9 @@ h3 {
 }
 
 .wrapper {
-    margin-top: -8rem;
+    /* margin-top: -8rem; */
+}
+
+.wrapper-no-orders {
+    text-align: center;
 }

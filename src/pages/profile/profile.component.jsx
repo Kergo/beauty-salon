@@ -1,11 +1,14 @@
 import React, { useContext, useState, useEffect } from 'react';
 import ProfileNav from '../../components/profile-nav/profile-nav.component';
 import CurrentUserContext from '../../contexts/current-user/current-user.context';
-import firebase, { sendResetPasswordEmail } from '../../firebase/firebase.utils';
+import firebase, {
+  sendResetPasswordEmail,
+} from '../../firebase/firebase.utils';
 import ProfileOrders from '../../components/profile-orders/profile-orders.component';
 import styles from './profile.module.css';
 import { Switch, Route } from 'react-router-dom';
 import CustomButton from '../../components/custom-button/custom-button.component';
+import ProfileOverview from '../../components/profile-overview/profile-overview.component';
 
 const ProfilePage = () => {
   const [userName, setUserName] = useState('');
@@ -40,17 +43,18 @@ const ProfilePage = () => {
   }
 
   return (
-    <div>
-      <ProfileNav />
-      <div className={styles['wrapper']}>
-        {/* <h1>User Profile</h1> 
-      <p>Name: {userName}</p>
-      <p>Email: {email}</p> */}
-      <Switch>
-        <Route path="/profile/orders" component={ProfileOrders} />
-      </Switch>
+    <div className={styles['wrapper']}>
+      <div className={styles['wrapper-left']}>
+        <ProfileNav />
+        {/* <h2>Be Part Of the Family</h2> */}
+      </div>
+      <div className={styles['wrapper-right']}>
+        <Switch>
+          <Route exact path="/profile" component={ProfileOverview} />
+          <Route path="/profile/orders" component={ProfileOrders} />
+        </Switch>
 
-      <CustomButton onClick={() => sendResetPasswordEmail(currentUser.email)}>Reset Password</CustomButton>
+        {/* <CustomButton onClick={() => sendResetPasswordEmail(currentUser.email)}>Reset Password</CustomButton> */}
       </div>
     </div>
   );
