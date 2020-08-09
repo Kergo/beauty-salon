@@ -30,7 +30,7 @@ const HomePage = () => {
     <div>
       {/* <h1>Love Your Body!</h1>
       <h1>Love Yourself!</h1> */}
-      <div className="services-container">
+      {/* <div className="services-container">
         {services.map(service => (
           <ServicesDirectory
             key={service.id}
@@ -39,7 +39,8 @@ const HomePage = () => {
             description={service.description}
           />
         ))}
-      </div>
+      </div> */}
+      <ServicesAppointmentInfo />
       {data.map((info, idx) => {
         if (info.hide && currentUser) {
           return null;
@@ -47,7 +48,6 @@ const HomePage = () => {
           return <InfoContainer key={idx} info={info} />;
         }
       })}
-      <ServicesAppointmentInfo />
     </div>
   );
 };
