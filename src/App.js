@@ -21,6 +21,7 @@ import Footer from './components/footer/footer.component';
 import ProductPreview from './components/product-preview/product-preview.component';
 import ServiceOverview from './components/service-overview/service-overview.component';
 import AppointmentPopup from './components/appointment-popup/appointment-popup.component';
+import ForgotPasswordPopup from './components/forgot-password-popup/forgot-password-popup.component';
 
 import ProductsState from './contexts/products/products.state';
 import ServicesState from './contexts/services/services.state';
@@ -98,6 +99,7 @@ class App extends React.Component {
                   />
                   <Route path='/appointment' component={AppointmentPopup} />
                   <Route path='/order-completed' component={OrderCompletedPage} />
+                  <Route path='/reset-password' component={ForgotPasswordPopup} />
                   <Route
                     exact
                     path="/dashboard"

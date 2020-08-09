@@ -49,6 +49,22 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   return userRef;
 };
 
+export const sendResetPasswordEmail = email => {
+  let auth = firebase.auth();
+
+  auth
+    .sendPasswordResetEmail(email)
+    .then(function () {
+      // Email sent.
+      console.log('email Sent');
+    })
+    .catch(function (error) {
+      // An error happened.
+      console.log(error);
+      
+    });
+};
+
 export const createUserPurchasedProduct = async (
   currentUser,
   product,
