@@ -6,6 +6,7 @@ import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 
 import './sign-in.styles.scss';
+import { Link } from 'react-router-dom';
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -65,6 +66,7 @@ class SignIn extends React.Component {
               Sign in with Google
             </CustomButton>
           </div>
+            <Link className='pass-reset' to='/reset-password'>Forgot Password</Link>
         </form>
       </div>
     );

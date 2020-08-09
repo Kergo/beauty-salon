@@ -1,10 +1,11 @@
 import React, { useContext, useState, useEffect } from 'react';
 import ProfileNav from '../../components/profile-nav/profile-nav.component';
 import CurrentUserContext from '../../contexts/current-user/current-user.context';
-import firebase from '../../firebase/firebase.utils';
+import firebase, { sendResetPasswordEmail } from '../../firebase/firebase.utils';
 import ProfileOrders from '../../components/profile-orders/profile-orders.component';
 import styles from './profile.module.css';
 import { Switch, Route } from 'react-router-dom';
+import CustomButton from '../../components/custom-button/custom-button.component';
 
 const ProfilePage = () => {
   const [userName, setUserName] = useState('');
@@ -48,6 +49,8 @@ const ProfilePage = () => {
       <Switch>
         <Route path="/profile/orders" component={ProfileOrders} />
       </Switch>
+
+      <CustomButton onClick={() => sendResetPasswordEmail(currentUser.email)}>Reset Password</CustomButton>
       </div>
     </div>
   );

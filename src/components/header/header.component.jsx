@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import { auth } from '../../firebase/firebase.utils';
 import CartIcon from '../cart-icon/cart-icon.component';
@@ -13,8 +13,8 @@ import './header.styles.scss';
 
 const Header = () => {
   const currentUser = useContext(CurrentUserContext);
-  const { hidden } = useContext(CartContext);  
-
+  const { hidden } = useContext(CartContext);
+  const history = useHistory();
   return (
     <div className="header">
       <Link className="logo-container" to="/">
@@ -34,7 +34,13 @@ const Header = () => {
           Contacts
         </Link>
         {currentUser ? (
-          <div className="option" onClick={() => auth.signOut()}>
+          <div
+            className="option"
+            onClick={() => {
+              history.push('/');
+              auth.signOut();
+            }}
+          >
             Sign Out
           </div>
         ) : (
@@ -47,12 +53,10 @@ const Header = () => {
           <i className={'far fa-heart fa-2x'}></i>
         </Link>
         {currentUser && currentUser.role === 'admin' ? (
-          <Link className="option" to='/dashboard'>
+          <Link className="option" to="/dashboard">
             Dashboard
           </Link>
-        ) : (
-          null
-        )}
+        ) : null}
       </div>
       {hidden ? null : <CartDropdown />}
     </div>
