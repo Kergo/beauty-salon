@@ -77,7 +77,7 @@ class App extends React.Component {
             <Switch>
               <ProductsState>
                 <ServicesState>
-              <Route exact path="/" component={HomePage} />
+                  <Route exact path="/" component={HomePage} />
                   <Route exact path="/products" component={ProductsPage} />
                   <Route
                     path="/products/:category/:item"
@@ -92,14 +92,30 @@ class App extends React.Component {
                   <Route path="/services/:type" component={ServiceOverview} />
                   <Route exact path="/contacts" component={ContactsPage} />
                   <Route exact path="/wish-list" component={WishListPage} />
-                  <Route path="/profile" component={ProfilePage} />
                   <Route
-                    exact path="/plastic-for-change"
+                    path="/profile"
+                    render={() =>
+                      !this.state.currentUser ? (
+                        <Redirect to="/signin" />
+                      ) : (
+                        <ProfilePage />
+                      )
+                    }
+                  />
+                  <Route
+                    exact
+                    path="/plastic-for-change"
                     component={PlasticForChangePage}
                   />
-                  <Route path='/appointment' component={AppointmentPopup} />
-                  <Route path='/order-completed' component={OrderCompletedPage} />
-                  <Route path='/reset-password' component={ForgotPasswordPopup} />
+                  <Route path="/appointment" component={AppointmentPopup} />
+                  <Route
+                    path="/order-completed"
+                    component={OrderCompletedPage}
+                  />
+                  <Route
+                    path="/reset-password"
+                    component={ForgotPasswordPopup}
+                  />
                   <Route
                     exact
                     path="/dashboard"
