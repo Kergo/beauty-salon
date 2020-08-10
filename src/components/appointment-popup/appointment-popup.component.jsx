@@ -1,90 +1,97 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 
 import FormInput from '../form-input/form-input.component';
-import { ReactComponent as Logo } from '../../assets/logo-green-small.svg';
-import './appointment-popup.styles.scss';
 import CustomButton from '../custom-button/custom-button.component';
 
+import { createAppointmentDocument } from '../../firebase/firebase.utils';
 import DatePicker from 'react-datepicker';
-
 import { registerLocale } from 'react-datepicker';
 
 import enGB from 'date-fns/locale/en-GB';
+import { ReactComponent as Logo } from '../../assets/logo-green-small.svg';
 import 'react-datepicker/dist/react-datepicker.css';
-registerLocale('en-GB', enGB);
+import './appointment-popup.styles.scss';
 
-class AppointmentPopup extends React.Component {
+const AppointmentPopup = () => {
+  const [state, setState] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    type: '',
+  });
+  const [startDate, setStartDate] = useState(new Date());
+  let history = useHistory();
+  registerLocale('en-GB', enGB);
 
-  constructor(props) {
-    super(props);
+  const handleSubmit = async e => {
+    e.preventDefault();
 
-    this.state = {
-      name: '',
-      phone: '',
-      email: '',
-      type: '',
-      startDate: new Date(),
-    };
-  }
-
-  handleChange = e => {
-    const { value, name } = e.target;
-
-    this.setState({ [name]: value });
+    let data = { ...state, startDate };
+    try {
+      await createAppointmentDocument(data);
+      setState({ name: '', phone: '', email: '', type: '' });
+      setStartDate(new Date());
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  handleDate = date => {
-    this.setState({
-      startDate: date,
-    });
+  const handleChange = event => {
+    const { name, value } = event.target;
+    setState(prevState => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
 
-  render() {
-      console.log(this.props.history);
-      
-    return (
-      <div className="popup">
-        <div className="popup__content">
-          <div className="popup__content--head">
-            <Link className="logo-container" to="/">
-              <Logo className="logo" />
-            </Link>
-            <i className="fas fa-times fa-2x" onClick={() => this.props.history.goBack()}></i>
-          </div>
-          <div className="popup__content--header">
-            <h2>Make an appointment at The Ugly Duckling</h2>
-            <h4>Every procedure is a beautiful experience</h4>
-          </div>
-          <div className="popup__content--form">
-            <form>
-              <div className="popup__content--form-body">
+  const handleDate = date => {
+    setStartDate(date);
+  };
 
+  return (
+    <div className="popup">
+      <div className="popup__content">
+        <div className="popup__content--head">
+          <Link className="logo-container" to="/">
+            <Logo className="logo" />
+          </Link>
+          <i
+            className="fas fa-times fa-2x"
+            onClick={() => history.goBack()}
+          ></i>
+        </div>
+        <div className="popup__content--header">
+          <h2>Make an appointment at The Ugly Duckling</h2>
+          <h4>Every procedure is a beautiful experience</h4>
+        </div>
+        <div className="popup__content--form">
+          <form onSubmit={handleSubmit}>
+            <div className="popup__content--form-body">
               <FormInput
                 id="name"
                 type="text"
                 name="name"
                 label="Name and Surname"
-                value={this.state.name}
-                handleChange={this.handleChange}
+                value={state.name}
+                handleChange={handleChange}
                 required
               />
               <FormInput
                 type="text"
                 name="phone"
                 label="Phone"
-                value={this.state.phone}
-                handleChange={this.handleChange}
+                value={state.phone}
+                handleChange={handleChange}
                 required
               />
-              </div>
-              <div className="popup__content--form-body">
-
+            </div>
+            <div className="popup__content--form-body">
               <FormInput
                 type="email"
                 name="email"
-                value={this.state.email}
-                handleChange={this.handleChange}
+                value={state.email}
+                handleChange={handleChange}
                 label="Email"
                 required
               />
@@ -92,33 +99,32 @@ class AppointmentPopup extends React.Component {
                 type="text"
                 name="type"
                 label="I would like to make an appointment for:"
-                value={this.state.type}
-                handleChange={this.handleChange}
+                value={state.type}
+                handleChange={handleChange}
                 required
               />
-              </div>
-              <div className="popup__content--form-footer">
-                <DatePicker
-                  selected={this.state.startDate}
-                  onChange={this.handleDate}
-                  showTimeSelect
-                  timeIntervals={15}
-                  timeFormat="HH:mm"
-                  minDate={new Date()}
-                  inline
-                  showDisabledMonthNavigation
-                  locale="en-GB"
-                  placeholderText="Click to select a date and time"
-                  dateFormat="d MMMM, yyyy hh:mm"
-                />
-                <CustomButton>Make an appointment</CustomButton>
-              </div>
-            </form>
-          </div>
+            </div>
+            <div className="popup__content--form-footer">
+              <DatePicker
+                selected={startDate}
+                onChange={handleDate}
+                showTimeSelect
+                timeIntervals={15}
+                timeFormat="HH:mm"
+                minDate={new Date()}
+                inline
+                showDisabledMonthNavigation
+                locale="en-GB"
+                placeholderText="Click to select a date and time"
+                dateFormat="d MMMM, yyyy hh:mm"
+              />
+              <CustomButton type="submit">Make an appointment</CustomButton>
+            </div>
+          </form>
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default AppointmentPopup;
