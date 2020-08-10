@@ -15,6 +15,8 @@ const config = {
   measurementId: 'G-M6PNVXY7J6',
 };
 
+// ------------USER-------------------
+
 // Adding a user into our database
 export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;
@@ -111,6 +113,10 @@ export const createUserPurchasedProduct = async (
   }
 };
 
+// --------------------------------------------
+
+// ------------------Products------------------
+
 export const getProductsDocuments = async docRef => {
   const productsRef = firestore.collection('products').doc(docRef);
   const productsDoc = await productsRef.get();
@@ -185,6 +191,22 @@ export const createProductDocument = async props => {
   }
 };
 
+// ---------------------------------------------------------------
+
+export const createAppointmentDocument = async (data) => {
+  const appointmentRef = firestore.collection('appointments').doc();
+  const snapShot = await appointmentRef.get();
+
+  try {
+    await appointmentRef.set(data)
+  } catch (error) {
+    console.error('Error creating product', error.message);
+    
+  }
+}
+
+// ---------------------Presentation data ---------------------------
+
 export const getPlasticForChangeCollection = async () => {
   let data = [];
   await firestore
@@ -217,7 +239,7 @@ export const getHomepagePartOfTheStoryDocument = async () => {
   // console.log('Document data:', doc.data());
   return doc.data();
 };
-
+// ---------------------------------------------------------------------
 firebase.initializeApp(config);
 
 export const auth = firebase.auth();
