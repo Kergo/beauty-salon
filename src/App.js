@@ -28,6 +28,7 @@ import ServicesState from './contexts/services/services.state';
 import CurrentUserContext from './contexts/current-user/current-user.context';
 
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
+import AppointmentCompleted from './components/appointment-completed/appointment-completed.component';
 
 class App extends React.Component {
   constructor(props) {
@@ -108,6 +109,10 @@ class App extends React.Component {
                     component={PlasticForChangePage}
                   />
                   <Route path="/appointment" component={AppointmentPopup} />
+                  <Route
+                    path="/appointment-completed"
+                    component={AppointmentCompleted}
+                  />
                   <Route
                     path="/order-completed"
                     component={OrderCompletedPage}
