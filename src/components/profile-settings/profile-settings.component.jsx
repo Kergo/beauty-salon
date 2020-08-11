@@ -46,6 +46,7 @@ const ProfileSettings = () => {
 
   return (
     <div className={styles['wrapper']}>
+      <h1>Settings</h1>
       <form onSubmit={handleSubmit}>
         <FormInput
           type="text"

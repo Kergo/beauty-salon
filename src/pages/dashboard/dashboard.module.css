@@ -1,0 +1,13 @@
+.wrapper {
+    display: flex;
+}
+
+.wrapper-right {
+    width: 80%;
+    /* margin-left: auto; */
+}
+
+.wrapper-left {
+    width: 20%;
+    /* text-align: center; */
+}

@@ -1,12 +1,28 @@
-import React from 'react'
+import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 import ProductUpload from '../../components/product-upload/product-upload.component';
+import DashboardNav from '../../components/dashboard-nav/dashboard-nav.component';
+import DashboardAppointment from '../../components/dashboard-appointment/dashboard-appointment.component';
+import styles from './dashboard.module.css';
 
 const DashboardPage = () => {
-    return (
-        <div>
-            <ProductUpload />
-        </div>
-    )
-}
+  return (
+    <div className={styles['wrapper']}>
+      <div className={styles['wrapper-left']}>
+        <DashboardNav />
+      </div>
+      <div className={styles['wrapper-right']}>
+        <Switch>
+          <Route
+            path="/dashboard/appointments"
+            component={DashboardAppointment}
+          />
+          <Route path="/dashboard/add-product" component={ProductUpload} />
+        </Switch>
 
-export default DashboardPage
+      </div>
+    </div>
+  );
+};
+
+export default DashboardPage;
