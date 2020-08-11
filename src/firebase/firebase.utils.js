@@ -206,6 +206,17 @@ export const createAppointmentDocument = async data => {
   return appointmentRef;
 };
 
+export const confirmAppointmentDocument = async props => {
+  const appointmentRef = firestore.collection('appointments').doc(props);
+  try {
+    await appointmentRef.update({
+      confirmed: true
+    })
+  } catch (error) {
+    console.error('Error confirming appointment', error.message);
+  }
+}
+
 // ---------------------Presentation data ---------------------------
 
 export const getPlasticForChangeCollection = async () => {

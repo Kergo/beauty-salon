@@ -50,6 +50,10 @@ const AppointmentPopup = () => {
     setStartDate(date);
   };
 
+  // Todo: 
+  // Error handling-- Check if hour is less validate phone number
+  // Implement recaptcha
+
   return (
     <div className="popup">
       <div className="popup__content">

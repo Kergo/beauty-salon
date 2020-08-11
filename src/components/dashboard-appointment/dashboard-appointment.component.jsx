@@ -7,9 +7,19 @@ import styles from './dashboard-appointment.module.css';
 const DashboardAppointment = () => {
   const [data, setData] = useState([]);
 
+  let actualDate = new Date();
+  let endOfDayDate = new Date(
+    actualDate.getFullYear(),
+    actualDate.getMonth(),
+    actualDate.getDate(),
+    23,
+    59,
+    59
+  );
+
   const refCol = firestore
     .collection('appointments')
-    .where('startDate', '<=', new Date())
+    .where('startDate', '<=', endOfDayDate)
     .orderBy('startDate');
   let unsubscribe = null;
   const fetchData = async () => {
@@ -25,6 +35,7 @@ const DashboardAppointment = () => {
     return () => unsubscribe();
     // eslint-disable-next-line
   }, []);
+  console.log(data);
 
   let nothingForToday = false;
   data.forEach(appointment => {
@@ -36,14 +47,13 @@ const DashboardAppointment = () => {
   return (
     <div>
       <h1 className={styles['title']}>Appointments For Today</h1>
-    <div className={styles['wrapper']}>
-
-      {data.map((appointment, idx) =>
-        appointment.confirmed ? (
-          <AppointmentCard key={idx} appointment={appointment} />
-        ) : null
-      )}
-    </div>
+      <div className={styles['wrapper']}>
+        {data.map((appointment, idx) =>
+          appointment.confirmed ? (
+            <AppointmentCard key={idx} appointment={appointment} />
+          ) : null
+        )}
+      </div>
     </div>
   );
 };
