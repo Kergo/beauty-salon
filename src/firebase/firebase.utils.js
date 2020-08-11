@@ -193,29 +193,36 @@ export const createProductDocument = async props => {
 
 // ---------------------------------------------------------------
 
-export const createAppointmentDocument = async data => {
-  const appointmentRef = firestore.collection('appointments').doc();
+// -------------------- Appointments ------------------------------
+
+export const createDocument = async (collection, data) => {
+  const docRef = firestore.collection(collection).doc();
   const createdAt = new Date();
   const confirmed = false;
   let newData = {...data, createdAt, confirmed}
   try {
-    await appointmentRef.set(newData);
+    await docRef.set(newData);
   } catch (error) {
     console.error('Error creating appointment', error.message);
   }
-  return appointmentRef;
+  return docRef;
 };
 
-export const confirmAppointmentDocument = async props => {
-  const appointmentRef = firestore.collection('appointments').doc(props);
+export const confirmDocument = async (collection, props) => {
+  const docRef = firestore.collection(collection).doc(props);
   try {
-    await appointmentRef.update({
+    await docRef.update({
       confirmed: true
     })
   } catch (error) {
     console.error('Error confirming appointment', error.message);
   }
 }
+
+// ---------------------------------------------------------------
+
+// -------------------- Contact ------------------------------
+
 
 // ---------------------Presentation data ---------------------------
 

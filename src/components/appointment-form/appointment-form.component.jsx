@@ -4,14 +4,14 @@ import { Link, useHistory } from 'react-router-dom';
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 
-import { createAppointmentDocument } from '../../firebase/firebase.utils';
+import { createDocument } from '../../firebase/firebase.utils';
 import DatePicker from 'react-datepicker';
 import { registerLocale } from 'react-datepicker';
 
 import enGB from 'date-fns/locale/en-GB';
 import { ReactComponent as Logo } from '../../assets/logo-green-small.svg';
 import 'react-datepicker/dist/react-datepicker.css';
-import './appointment-popup.styles.scss';
+import './appointment-form.styles.scss';
 
 const AppointmentPopup = () => {
   const [state, setState] = useState({
@@ -29,7 +29,7 @@ const AppointmentPopup = () => {
 
     let data = { ...state, startDate };
     try {
-      await createAppointmentDocument(data);
+      await createDocument('appointments', data);
       setState({ name: '', phone: '', email: '', type: '' });
       setStartDate(new Date());
       history.push('/appointment-completed')

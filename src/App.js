@@ -20,7 +20,7 @@ import Header from './components/header/header.component';
 import Footer from './components/footer/footer.component';
 import ProductPreview from './components/product-preview/product-preview.component';
 import ServiceOverview from './components/service-overview/service-overview.component';
-import AppointmentPopup from './components/appointment-popup/appointment-popup.component';
+import AppointmentPopup from './components/appointment-form/appointment-form.component';
 import ForgotPasswordPopup from './components/forgot-password-popup/forgot-password-popup.component';
 
 import ProductsState from './contexts/products/products.state';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { formatDate, formatTime } from '../format-date/index.js';
 import CustomButton from '../custom-button/custom-button.component.jsx';
-import { confirmAppointmentDocument } from '../../firebase/firebase.utils';
+import { confirmDocument } from '../../firebase/firebase.utils';
 import styles from './appointment-card.module.css';
 const AppointmentCard = ({ appointment }) => {
   const { name, email, phone, type, startDate, confirmed, id } = appointment;
@@ -17,7 +17,7 @@ const AppointmentCard = ({ appointment }) => {
       <p>Time: {time}</p>
       <p>Email: {email}</p>
       {!confirmed ? (
-        <CustomButton onClick={() => confirmAppointmentDocument(id)}>
+        <CustomButton onClick={() => confirmDocument('appointments', id)}>
           Confirm
         </CustomButton>
       ) : null}
