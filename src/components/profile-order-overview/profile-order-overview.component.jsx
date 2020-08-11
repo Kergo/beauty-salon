@@ -1,12 +1,9 @@
 import React from 'react';
+import formatDate from '../format-date/index.js';
 import styles from './profile-order-overview.module.css';
 
 const ProfileOrderOverview = ({ order }) => {
-  let timestamp = order.createdAt;
-  let myDate = timestamp.toDate().getDate();
-  let myMonth = timestamp.toDate().getMonth();
-  let myYear = timestamp.toDate().getFullYear();
-  let formated = `${myDate}-${myMonth}-${myYear}`;
+  let date = formatDate(order.createdAt)
   
   return (
     <div className={styles['ordered']}>
@@ -23,7 +20,7 @@ const ProfileOrderOverview = ({ order }) => {
           <tr>
             <th>{order.id}</th>
             <th>{!order.delivered ? 'In progress' : 'completed'}</th>
-            <th>{formated}</th>
+            <th>{date}</th>
             <th>€{Math.round(order.totalAmount * 100) / 100}</th>
           </tr>
         </tbody>

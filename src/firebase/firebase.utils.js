@@ -193,17 +193,16 @@ export const createProductDocument = async props => {
 
 // ---------------------------------------------------------------
 
-export const createAppointmentDocument = async (data) => {
+export const createAppointmentDocument = async data => {
   const appointmentRef = firestore.collection('appointments').doc();
-  const snapShot = await appointmentRef.get();
 
   try {
-    await appointmentRef.set(data)
+    await appointmentRef.set(data);
   } catch (error) {
-    console.error('Error creating product', error.message);
-    
+    console.error('Error creating appointment', error.message);
   }
-}
+  return appointmentRef;
+};
 
 // ---------------------Presentation data ---------------------------
 

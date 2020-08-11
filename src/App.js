@@ -122,7 +122,6 @@ class App extends React.Component {
                     component={ForgotPasswordPopup}
                   />
                   <Route
-                    exact
                     path="/dashboard"
                     render={() =>
                       this.state.currentUser.role === 'admin' ? (
