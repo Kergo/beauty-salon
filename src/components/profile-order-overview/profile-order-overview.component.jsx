@@ -1,5 +1,5 @@
 import React from 'react';
-import formatDate from '../format-date/index.js';
+import {formatDate} from '../format-date/index.js';
 import styles from './profile-order-overview.module.css';
 
 const ProfileOrderOverview = ({ order }) => {
