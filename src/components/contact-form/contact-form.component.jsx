@@ -9,7 +9,7 @@ const ContactForm = () => {
     name: '',
     email: '',
     subject: '',
-    message: '',
+    text: '',
   });
 
   const handleSubmit = async e => {
@@ -18,7 +18,7 @@ const ContactForm = () => {
     let data = { ...state };
     try {
       await createDocument('contacts', data);
-      setState({ name: '', subject: '', email: '', message: '' });
+      setState({ name: '', subject: '', email: '', text: '' });
     } catch (error) {
       console.error(error);
     }
@@ -62,9 +62,9 @@ const ContactForm = () => {
         />
         <textarea
           className="message"
-          name="message"
+          name="text"
           onChange={handleChange}
-          value={state.message}
+          value={state.text}
           placeholder="Your Message"
           required
         />
