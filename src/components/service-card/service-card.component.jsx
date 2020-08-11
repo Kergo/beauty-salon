@@ -14,7 +14,7 @@ const ServiceCard = ({ title, description, imageUrl }) => {
       className="service-card"
       onClick={() => {
         if (!match.params.type) {
-          history.push(`${match.url}/${title}`);
+          history.push(`/services/${title}`);
         } else {
           history.push(`${title}`);
         }

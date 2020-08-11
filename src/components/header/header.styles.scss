@@ -32,7 +32,7 @@
       color: inherit;
       text-transform: uppercase;
       padding: 0.75rem;
-      margin: 0 0.25rem;
+      margin: 0 0.5rem;
       border-bottom: 3px solid transparent;
       padding-bottom: 0.5rem;
       transition: border-color 0.5s;
@@ -45,6 +45,15 @@
       &.current {
         border-color: grey;
       }
+    }
+
+    .second-option {
+      margin: 0 0.5rem;
+    }
+
+    .fa-heart,
+    .fa-user {
+      color: #fff;
     }
   }
 }

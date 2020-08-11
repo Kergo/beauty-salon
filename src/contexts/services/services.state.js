@@ -5,6 +5,7 @@ import { firestore } from '../../firebase/firebase.utils';
 
 const ServicesState = props => {
   const initialState = {
+    loading: false,
     services: [],
     service: []
   };
@@ -13,6 +14,8 @@ const ServicesState = props => {
 
   // Get Services
   const getServices = async () => {
+    setLoading();
+
     const data = [];
     try {
       await firestore
@@ -36,6 +39,8 @@ const ServicesState = props => {
 
   // Get Service
   const getService = async docType => {
+    setLoading();
+
     let data = undefined;
     try {
       firestore
@@ -56,9 +61,12 @@ const ServicesState = props => {
     }
   };
 
+  const setLoading = () => dispatch({ type: 'SET_LOADING' });
+
   return (
     <ServicesContext.Provider
       value={{
+        loading: state.loading,
         services: state.services,
         service: state.service,
         getServices,

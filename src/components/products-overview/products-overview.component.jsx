@@ -5,7 +5,6 @@ import ProductItem from '../product-item/product-item.component';
 import './products-overview.styles.scss';
 
 const ProductsOverview = ({ products }) => {
-  // console.log(products);
   let history = useHistory();
   let match = useRouteMatch();
 

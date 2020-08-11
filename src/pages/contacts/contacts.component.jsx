@@ -1,7 +1,6 @@
 import React from 'react';
 import MapContainer from '../../components/map/map.component';
 import ContactDetails from '../../components/contact-details/contact-details.component';
-import OpeningTime from '../../components/opening-time/opening-time.component';
 import ContactForm from '../../components/contact-form/contact-form.component';
 import './contacts.styles.scss';
 
@@ -22,7 +21,6 @@ const ContactsPage = () => {
             get directions
           </a>
         </div>
-        {/* <OpeningTime /> */}
         <ContactDetails />
       </div>
       <div className="contact-form-wrapper">

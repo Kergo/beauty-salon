@@ -1,0 +1,21 @@
+h1, h3 {
+    margin: 3.5rem auto;
+}
+
+h3 {
+    margin-left: 5rem;
+}
+
+.title {
+    font-size: 4rem;
+    text-align: center;
+    margin-bottom: 8rem;
+}
+
+.wrapper {
+    /* margin-top: -8rem; */
+}
+
+.wrapper-no-orders {
+    text-align: center;
+}

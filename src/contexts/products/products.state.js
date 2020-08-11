@@ -5,6 +5,7 @@ import { firestore } from '../../firebase/firebase.utils';
 
 const ProductsState = props => {
   const initialState = {
+    loading: false,
     productsCollection: [],
     products: { items: [] },
     product: {name: '', usage: '', description: '', price: '', size: '', productStorage: '', ingredients: ''}
@@ -14,6 +15,8 @@ const ProductsState = props => {
 
   // Get Products Collection
   const getProductsCollection = async () => {
+    setLoading();
+
     const data = [];
     try {
       await firestore
@@ -36,6 +39,8 @@ const ProductsState = props => {
   };
 
   const getProducts = async docRef => {
+    setLoading();
+
     let data = undefined;
     try {
       await firestore
@@ -55,6 +60,8 @@ const ProductsState = props => {
   };
 
   const getProduct = async (docRef, productId) => {
+    setLoading();
+
     let data = undefined;
     try {
       await firestore
@@ -78,12 +85,15 @@ const ProductsState = props => {
     }
   };
 
+  const setLoading = () => dispatch({ type: 'SET_LOADING' });
+
   return (
     <ProductsContext.Provider
       value={{
         productsCollection: state.productsCollection,
         products: state.products,
         product: state.product,
+        loading: state.loading,
         getProduct,
         getProducts,
         getProductsCollection,

@@ -1,27 +1,23 @@
 import React, { createContext, useState, useEffect } from 'react';
 
-import {
-  addItemToWishList,
-  removeItemFromWishList,
-} from './wish-list.utils';
+import { addRemoveItemFromWish } from './wish-list.utils';
 
 export const WishListContext = createContext({
-  hidden: true,
-  toggleHidden: () => {},
+  wished: false,
+  toggleWished: () => {},
   wishListItems: [],
   addWishItem: () => {},
-  removeWishItem: () => {},
 });
 
 const WishListProvider = ({ children }) => {
-  const [hidden, setHidden] = useState(true);
+  const [wished, setWished] = useState(true);
   const [wishListItems, setWishListItems] = useState(
     JSON.parse(localStorage.getItem('wishList')) || []
   );
 
-  const addWishItem = item => setWishListItems(addItemToWishList(wishListItems, item));
-  const removeWishItem = item => setWishListItems(removeItemFromWishList(wishListItems, item));
-  const toggleHidden = () => setHidden(!hidden);
+  const addWishItem = item =>
+    setWishListItems(addRemoveItemFromWish(wishListItems, item));
+  const toggleWished = () => setWished(!wished);
 
   useEffect(() => {
     localStorage.setItem('wishList', JSON.stringify(wishListItems));
@@ -30,11 +26,10 @@ const WishListProvider = ({ children }) => {
   return (
     <WishListContext.Provider
       value={{
-        hidden,
-        toggleHidden,
+        wished,
+        toggleWished,
         wishListItems,
         addWishItem,
-        removeWishItem,
       }}
     >
       {children}

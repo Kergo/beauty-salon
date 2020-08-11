@@ -6,12 +6,14 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import CartProvider from './contexts/cart/cart.provider';
 import WishListProvider from './contexts/wish-list/wish-list.provider';
+import ScrollToTop from './components/scroll-to-top/scroll-to-top.component';
 
 ReactDOM.render(
   <CartProvider>
     <WishListProvider>
       <BrowserRouter>
         <React.StrictMode>
+          <ScrollToTop />
           <App />
         </React.StrictMode>
       </BrowserRouter>

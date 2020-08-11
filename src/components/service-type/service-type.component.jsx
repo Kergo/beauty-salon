@@ -3,7 +3,7 @@ import ServiceItem from '../service-item/service-item.component';
 import './service-type.styles.scss';
 
 const ServiceType = ({ title, details }) => {
-  console.log(details);
+  // console.log(details);
 
   return (
     <div className='service-type'>

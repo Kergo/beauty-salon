@@ -30,13 +30,13 @@ const CartProvider = ({ children }) => {
   const toggleHidden = () => setHidden(!hidden);
   const clearItemFromCart = item =>
     setCartItems(filterItemFromCart(cartItems, item));
+  const clearAllItemsFromCart = () => setCartItems([])  
 
   useEffect(() => {
     setCartItemsCount(getCartItemsCount(cartItems));
     setCartTotal(getCartTotal(cartItems));
     localStorage.setItem('cartItems', JSON.stringify(cartItems))
   }, [cartItems]);
-
   return (
     <CartContext.Provider
       value={{
@@ -47,7 +47,8 @@ const CartProvider = ({ children }) => {
         removeItem,
         clearItemFromCart,
         cartItemsCount,
-        cartTotal
+        cartTotal,
+        clearAllItemsFromCart
       }}
     >
       {children}

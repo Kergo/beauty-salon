@@ -15,6 +15,8 @@ const config = {
   measurementId: 'G-M6PNVXY7J6',
 };
 
+// ------------USER-------------------
+
 // Adding a user into our database
 export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;
@@ -28,6 +30,8 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
     // retrieve user information from the firebase snapshot
     const { displayName, email } = userAuth;
     const createdAt = new Date();
+    const purchasedProducts = [];
+    const totalPoints = 0;
 
     // If there is no document for the user we will create a new object (document)
     try {
@@ -35,6 +39,8 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
         displayName,
         email,
         createdAt,
+        purchasedProducts,
+        totalPoints,
         ...additionalData,
       });
     } catch (error) {
@@ -45,10 +51,76 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   return userRef;
 };
 
+export const updateUserProfile = async (currentUser, additionalData) => {
+  if (!currentUser) return;
+  const userRef = firestore.doc(`users/${currentUser.id}`);
+  // const snapShot = await userRef.get();
+  try {
+    userRef.update({
+      ...additionalData,
+    });
+  } catch (error) {
+    console.error('Error Updating User Document', error.message);
+  }
+};
+
+export const sendResetPasswordEmail = email => {
+  let auth = firebase.auth();
+
+  auth
+    .sendPasswordResetEmail(email)
+    .then(function () {
+      // Email sent.
+      console.log('email Sent');
+    })
+    .catch(function (error) {
+      // An error happened.
+      console.log(error);
+    });
+};
+
+export const createUserPurchasedProduct = async (
+  currentUser,
+  product,
+  totalAmount
+) => {
+  if (!currentUser) return;
+
+  const userRef = firestore.doc(`users/${currentUser.id}`);
+  const snapShot = await userRef.get();
+  try {
+    const createdAt = new Date();
+    const delivered = false;
+    let lastId = snapShot.data().purchasedProducts.length;
+    let lastTotalPoints = snapShot.data().totalPoints;
+    let id = lastId++;
+    let points = Math.round(totalAmount * 0.1);
+    let newTotalPoints = lastTotalPoints + points;
+    const data = {
+      createdAt,
+      id,
+      delivered,
+      totalAmount,
+      points,
+      ...product,
+    };
+    userRef.update({
+      purchasedProducts: firebase.firestore.FieldValue.arrayUnion(data),
+      totalPoints: newTotalPoints,
+    });
+  } catch (error) {
+    console.error('Error creating Purchased Product Document', error.message);
+  }
+};
+
+// --------------------------------------------
+
+// ------------------Products------------------
+
 export const getProductsDocuments = async docRef => {
   const productsRef = firestore.collection('products').doc(docRef);
   const productsDoc = await productsRef.get();
-  console.log('Document data:', productsDoc.data());
+  // console.log('Document data:', productsDoc.data());
   return productsDoc;
 };
 
@@ -119,6 +191,74 @@ export const createProductDocument = async props => {
   }
 };
 
+// ---------------------------------------------------------------
+
+// -------------------- Appointments ------------------------------
+
+export const createDocument = async (collection, data) => {
+  const docRef = firestore.collection(collection).doc();
+  const createdAt = new Date();
+  const confirmed = false;
+  let newData = {...data, createdAt, confirmed}
+  try {
+    await docRef.set(newData);
+  } catch (error) {
+    console.error('Error creating appointment', error.message);
+  }
+  return docRef;
+};
+
+export const confirmDocument = async (collection, props) => {
+  const docRef = firestore.collection(collection).doc(props);
+  try {
+    await docRef.update({
+      confirmed: true
+    })
+  } catch (error) {
+    console.error('Error confirming appointment', error.message);
+  }
+}
+
+// ---------------------------------------------------------------
+
+// -------------------- Contact ------------------------------
+
+
+// ---------------------Presentation data ---------------------------
+
+export const getPlasticForChangeCollection = async () => {
+  let data = [];
+  await firestore
+    .collection('plastic-for-change-text')
+    .get()
+    .then(querySnapshot => {
+      querySnapshot.forEach(doc => {
+        data.push(doc.data());
+      });
+    });
+  return data;
+};
+
+export const getHomepageCollection = async () => {
+  let data = [];
+  await firestore
+    .collection('homepage')
+    .get()
+    .then(querySnapshot => {
+      querySnapshot.forEach(doc => {
+        data.push(doc.data());
+      });
+    });
+  return data;
+};
+
+export const getHomepagePartOfTheStoryDocument = async () => {
+  const docRef = firestore.collection('homepage').doc('5Vve2OrIVFcKaLWaPMvK');
+  const doc = await docRef.get();
+  // console.log('Document data:', doc.data());
+  return doc.data();
+};
+// ---------------------------------------------------------------------
 firebase.initializeApp(config);
 
 export const auth = firebase.auth();
