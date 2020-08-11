@@ -1,13 +1,11 @@
 import React from 'react';
 import formatDate from '../format-date/index.js';
-import styles from './appointment-card.module.css'
-const AppointmentCard = ({appointment}) => {
+import styles from './appointment-card.module.css';
+const AppointmentCard = ({ appointment }) => {
   const { name, email, phone, type, startDate } = appointment;
-  console.log(appointment);
   let date = formatDate(startDate);
-  
   return (
-    <div className={styles['wrapper']}>
+    <div className={styles['card']}>
       <p>{name}</p>
       <p>{phone}</p>
       <p>{type}</p>

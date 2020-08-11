@@ -195,9 +195,11 @@ export const createProductDocument = async props => {
 
 export const createAppointmentDocument = async data => {
   const appointmentRef = firestore.collection('appointments').doc();
-
+  const createdAt = new Date();
+  const confirmed = false;
+  let newData = {...data, createdAt, confirmed}
   try {
-    await appointmentRef.set(data);
+    await appointmentRef.set(newData);
   } catch (error) {
     console.error('Error creating appointment', error.message);
   }
