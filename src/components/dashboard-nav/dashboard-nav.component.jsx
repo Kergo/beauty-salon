@@ -17,10 +17,10 @@ const DashboardNav = () => {
       </div>
       <div className={styles['option']}
         onClick={() => {
-          history.push(`${match.url}/settings`);
+          history.push(`${match.url}/messages`);
         }}
       >
-        Settings
+        Messages
       </div>
       <div className={styles['option']}
         onClick={() => {

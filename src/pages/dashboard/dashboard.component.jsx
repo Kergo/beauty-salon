@@ -4,8 +4,9 @@ import { Switch, Route } from 'react-router-dom';
 import ProductUpload from '../../components/product-upload/product-upload.component';
 import DashboardNav from '../../components/dashboard-nav/dashboard-nav.component';
 import DashboardAppointment from '../../components/dashboard-appointment/dashboard-appointment.component';
-import styles from './dashboard.module.css';
 import DashboardPendingForReview from '../../components/dashboard-pending-for-review/dashboard-pending-for-review.component';
+import DashboardMessages from '../../components/dashboard-messages/dashboard-messages.component';
+import styles from './dashboard.module.css';
 
 const DashboardPage = () => {
   return (
@@ -23,6 +24,10 @@ const DashboardPage = () => {
           <Route
             path="/dashboard/appointments"
             component={DashboardAppointment}
+          />
+                    <Route
+            path="/dashboard/messages"
+            component={DashboardMessages}
           />
           <Route path="/dashboard/add-product" component={ProductUpload} />
         </Switch>
