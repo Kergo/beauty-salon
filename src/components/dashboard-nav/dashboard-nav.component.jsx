@@ -31,6 +31,13 @@ const DashboardNav = () => {
       </div>
       <div className={styles['option']}
         onClick={() => {
+          history.push(`${match.url}/registered-our-family`);
+        }}
+      >
+        Our Family
+      </div>
+      <div className={styles['option']}
+        onClick={() => {
           history.push(`${match.url}/add-product`);
         }}
       >

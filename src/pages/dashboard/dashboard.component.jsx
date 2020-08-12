@@ -6,6 +6,7 @@ import DashboardNav from '../../components/dashboard-nav/dashboard-nav.component
 import DashboardAppointment from '../../components/dashboard-appointment/dashboard-appointment.component';
 import DashboardPendingForReview from '../../components/dashboard-pending-for-review/dashboard-pending-for-review.component';
 import DashboardMessages from '../../components/dashboard-messages/dashboard-messages.component';
+import DashboardOurFamily from '../../components/dashboard-our-family/dashboard-our-family.component';
 import styles from './dashboard.module.css';
 
 const DashboardPage = () => {
@@ -25,9 +26,10 @@ const DashboardPage = () => {
             path="/dashboard/appointments"
             component={DashboardAppointment}
           />
-                    <Route
-            path="/dashboard/messages"
-            component={DashboardMessages}
+          <Route path="/dashboard/messages" component={DashboardMessages} />
+          <Route
+            path="/dashboard/registered-our-family"
+            component={DashboardOurFamily}
           />
           <Route path="/dashboard/add-product" component={ProductUpload} />
         </Switch>

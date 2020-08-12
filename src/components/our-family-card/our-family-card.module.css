@@ -1,0 +1,15 @@
+.card {
+    border: 2px solid #6abd6c;
+    border-radius: 2rem;
+    background-color: lightgray;
+    padding: 2rem;
+    text-align: center;
+    width: 70%;
+    margin: 1rem;
+    font-weight: bold;
+    font-size: 1.8rem;
+  }
+  p {
+    margin-bottom: 1.5rem;
+  }
+  
