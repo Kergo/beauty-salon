@@ -15,6 +15,7 @@ import DashboardPage from './pages/dashboard/dashboard.component';
 import ProfilePage from './pages/profile/profile.component';
 import PlasticForChangePage from './pages/plastic-for-change/plastic-for-change.component';
 import OrderCompletedPage from './pages/order-completed/order-completed.component';
+import RegistrationAtHomePage from './pages/registration-at-home/registration-at-home.component';
 
 import Header from './components/header/header.component';
 import Footer from './components/footer/footer.component';
@@ -22,13 +23,13 @@ import ProductPreview from './components/product-preview/product-preview.compone
 import ServiceOverview from './components/service-overview/service-overview.component';
 import AppointmentPopup from './components/appointment-form/appointment-form.component';
 import ForgotPasswordPopup from './components/forgot-password-popup/forgot-password-popup.component';
+import FormSubmited from './components/form-submited/form-submited.component';
 
 import ProductsState from './contexts/products/products.state';
 import ServicesState from './contexts/services/services.state';
 import CurrentUserContext from './contexts/current-user/current-user.context';
 
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
-import AppointmentCompleted from './components/appointment-completed/appointment-completed.component';
 
 class App extends React.Component {
   constructor(props) {
@@ -110,8 +111,8 @@ class App extends React.Component {
                   />
                   <Route path="/appointment" component={AppointmentPopup} />
                   <Route
-                    path="/appointment-completed"
-                    component={AppointmentCompleted}
+                    path="/form-submited"
+                    component={FormSubmited}
                   />
                   <Route
                     path="/order-completed"
@@ -120,6 +121,10 @@ class App extends React.Component {
                   <Route
                     path="/reset-password"
                     component={ForgotPasswordPopup}
+                  />
+                  <Route
+                    path="/registrationathome"
+                    component={RegistrationAtHomePage}
                   />
                   <Route
                     path="/dashboard"

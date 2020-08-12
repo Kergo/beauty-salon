@@ -9,27 +9,28 @@
   align-items: center;
   list-style: none;
   background: #345;
-  color: #fff;
+  color: #6abd6c;
   font-weight: bold;
   padding-bottom: 1rem;
+  padding-top: 8rem;
   /* margin: 0 auto; */
   margin-top: -2rem;
   /* margin-left: 15rem; */
   width: 55%;
   height: 120%;
-  justify-content: center;
+  justify-content: top;
 }
 .option {
   color: inherit;
   text-transform: uppercase;
   padding: 0.75rem;
   margin: 0 0.25rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   border-bottom: 3px solid transparent;
   padding-bottom: 0.5rem;
   transition: border-color 0.5s;
   cursor: pointer;
 }
 .option:hover {
-  border-color: white;
+  border-color: #6abd6c;
 }

@@ -3,6 +3,7 @@ import { useHistory, useRouteMatch } from 'react-router-dom';
 
 import ProductItem from '../product-item/product-item.component';
 import './products-overview.styles.scss';
+import CustomButton from '../custom-button/custom-button.component';
 
 const ProductsOverview = ({ products }) => {
   let history = useHistory();
@@ -10,7 +11,8 @@ const ProductsOverview = ({ products }) => {
 
   return (
     <div className="products-overview">
-      <h2 className="title" onClick={() => history.push(`${match.url}/${products.title}`)}>{products.title}</h2>
+      <CustomButton onClick={() => history.push(`${match.url}/${products.title}`)}>{products.title}</CustomButton>
+      {/* <h2 className="title" onClick={() => history.push(`${match.url}/${products.title}`)}>{products.title}</h2> */}
       <div className="overview">
         {products.items
           .filter((item, idx) => idx < 4)
