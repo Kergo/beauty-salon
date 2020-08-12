@@ -7,10 +7,10 @@ const MessageCard = ({ message }) => {
 
   return (
     <div className={styles['card']}>
-      <p>Name: {name}</p>
-      <p>Email: {email}</p>
-      <p>Subject: {subject}</p>
-      <p>Message: {text}</p>
+      <p className={styles['paragraph']}>Name: {name}</p>
+      <p className={styles['paragraph']}>Email: {email}</p>
+      <p className={styles['paragraph']}>Subject: {subject}</p>
+      <p className={styles['paragraph']}>Message: {text}</p>
       {!confirmed ? (
         <CustomButton onClick={() => confirmDocument('contacts', id)}>
           Confirm

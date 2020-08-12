@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 
 import { CartContext } from '../../contexts/cart/cart.provider';
 
-import { ReactComponent as ShoppingIcon } from '../../assets/shopping-cart.svg';
+// import { ReactComponent as ShoppingIcon } from '../../assets/shopping-cart.svg';
+import { ReactComponent as ShoppingIcon } from '../../assets/shopping-bag-svgrepo-com.svg';
 
 import './cart-icon.styles.scss';
 

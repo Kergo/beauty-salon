@@ -10,12 +10,12 @@ const AppointmentCard = ({ appointment }) => {
 
   return (
     <div className={styles['card']}>
-      <p>Name: {name}</p>
-      <p>Phone: {phone}</p>
-      <p>Service: {type}</p>
-      <p>Date: {date}</p>
-      <p>Time: {time}</p>
-      <p>Email: {email}</p>
+      <p className={styles['paragraph']}>Name: {name}</p>
+      <p className={styles['paragraph']}>Phone: {phone}</p>
+      <p className={styles['paragraph']}>Service: {type}</p>
+      <p className={styles['paragraph']}>Date: {date}</p>
+      <p className={styles['paragraph']}>Time: {time}</p>
+      <p className={styles['paragraph']}>Email: {email}</p>
       {!confirmed ? (
         <CustomButton onClick={() => confirmDocument('appointments', id)}>
           Confirm

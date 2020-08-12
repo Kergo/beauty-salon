@@ -16,11 +16,19 @@ const HomePage = () => {
     }
     fetchData();
   }, []);
-  
+
   return (
     <div>
-      {/* <h1>Love Your Body!</h1>
-      <h1>Love Yourself!</h1> */}
+      <div className="homepage-heading">
+        <h1>Love Your Body!</h1>
+        <div className="homepage-heading-image">
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/beauty-salon-8a9d4.appspot.com/o/images%2Fuglyducklinn.png?alt=media&token=2cb9bc79-1316-4cbc-9df3-7cda8504f6a6"
+            alt="ugly-duckling"
+          />
+        </div>
+        <h1>Love Yourself!</h1>
+      </div>
       <ServicesAppointmentInfo />
       {data.map((info, idx) => {
         if (info.hide && currentUser) {

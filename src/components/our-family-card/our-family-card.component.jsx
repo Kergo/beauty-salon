@@ -7,10 +7,10 @@ const OurFamilyCard = ({ registration }) => {
 
   return (
     <div className={styles['card']}>
-      <p>First Name: {firstName}</p>
-      <p>Last Name: {lastName}</p>
-      <p>Email: {email}</p>
-      <p>Phone: {phone}</p>
+      <p className={styles['paragraph']}>First Name: {firstName}</p>
+      <p className={styles['paragraph']}>Last Name: {lastName}</p>
+      <p className={styles['paragraph']}>Email: {email}</p>
+      <p className={styles['paragraph']}>Phone: {phone}</p>
       {!confirmed ? (
         <CustomButton onClick={() => confirmDocument('register-at-home', id)}>
           Confirm

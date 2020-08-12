@@ -7,7 +7,8 @@ import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 import CurrentUserContext from '../../contexts/current-user/current-user.context';
 import { CartContext } from '../../contexts/cart/cart.provider';
 
-import { ReactComponent as Logo } from '../../assets/logo-green-small.svg';
+// import { ReactComponent as Logo } from '../../assets/logo-green-small.svg';
+import { ReactComponent as Logo } from '../../assets/duck.svg';
 
 import './header.styles.scss';
 
