@@ -28,7 +28,7 @@ class ProductUpload extends Component {
       category: 'face',
       gender: 'men',
     };
-  }  
+  }
 
   handleSubmit = async e => {
     e.preventDefault();
@@ -75,7 +75,7 @@ class ProductUpload extends Component {
                   imageUrl,
                 });
               })
-              .then(() =>
+              .then(() => {
                 this.setState({
                   image: null,
                   imageUrl: '',
@@ -90,8 +90,9 @@ class ProductUpload extends Component {
                   size: '',
                   category: 'face',
                   gender: 'men',
-                })
-              );
+                });
+                this.props.history.push(`/`);
+              });
           }
         );
       } catch (error) {
@@ -101,7 +102,6 @@ class ProductUpload extends Component {
       this.setState({ error: 'Error please choose an image to upload' });
     }
   };
-
   handleChange = e => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
@@ -133,7 +133,7 @@ class ProductUpload extends Component {
       category,
       gender,
     } = this.state;
-    
+
     return (
       <div className="product-upload">
         <h2 className="title">Add Product</h2>

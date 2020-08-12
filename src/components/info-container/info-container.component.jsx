@@ -24,13 +24,13 @@ const InfoContainer = ({ info }) => {
           {paragraphs.map((p, idx) => {
             return <InfoParagraph key={idx} paragraph={p} />;
           })}
+          {btn ? (
+            <CustomButton onClick={() => history.replace(`/${btn.url}`)}>
+              {btn.text}
+            </CustomButton>
+          ) : null}
         </div>
       </div>
-      {btn ? (
-        <CustomButton onClick={() => history.replace(`/${btn.url}`)}>
-          {btn.text}
-        </CustomButton>
-      ) : null}
     </div>
   );
 };
