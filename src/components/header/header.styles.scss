@@ -1,3 +1,8 @@
+svg {
+  g {
+    fill: white;
+  }
+}
 .header {
   display: flex;
   position: sticky;
@@ -6,18 +11,25 @@
   justify-content: space-between;
   z-index: 1;
   padding: 1rem;
-  //   font-size: 1.6rem;
 
   .logo-container {
     height: 5rem;
     width: 5rem;
-    //   padding: .5rem;
     margin-left: 3rem;
-  }
 
-  .logo {
-    height: 100%;
-    width: 100%;
+    &:hover {
+      svg {
+        g {
+          fill: #6abd6c;
+        }
+      }
+    }
+
+    .logo {
+      height: 100%;
+      width: 100%;
+      fill: white;
+    }
   }
 
   .options {
@@ -49,6 +61,11 @@
 
     .second-option {
       margin: 0 0.5rem;
+      &:hover {
+        i {
+          color: #6abd6c;
+        }
+      }
     }
 
     .fa-heart,

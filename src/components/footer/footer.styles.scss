@@ -7,5 +7,19 @@
         width: 80%;
         margin: 0 auto;
         padding: 4rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &-contact-container {
+        .contact-details-wrapper {
+            font-size: 1.4rem;
+        }
+    }
+
+    &-all-rights {
+        display: flex;
+        justify-content: space-between;
+        margin: 0 2rem;
     }
 }
