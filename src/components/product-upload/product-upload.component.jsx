@@ -109,7 +109,6 @@ class ProductUpload extends Component {
 
   handleFile = e => {
     const file = e.target.files[0];
-    // console.log(file);
     if (file) {
       const fileType = file['type'];
       const validImageTypes = ['image/jpeg', 'image/jpg', 'image/png'];
@@ -134,7 +133,6 @@ class ProductUpload extends Component {
       category,
       gender,
     } = this.state;
-    console.log(this.props);
     
     return (
       <div className="product-upload">

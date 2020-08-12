@@ -1,19 +1,17 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import ProfileNav from '../../components/profile-nav/profile-nav.component';
 import CurrentUserContext from '../../contexts/current-user/current-user.context';
 import firebase, {
-  sendResetPasswordEmail,
 } from '../../firebase/firebase.utils';
 import ProfileOrders from '../../components/profile-orders/profile-orders.component';
 import styles from './profile.module.css';
 import { Switch, Route } from 'react-router-dom';
-import CustomButton from '../../components/custom-button/custom-button.component';
 import ProfileOverview from '../../components/profile-overview/profile-overview.component';
 import ProfileSettings from '../../components/profile-settings/profile-settings.component';
 
 const ProfilePage = () => {
-  const [userName, setUserName] = useState('');
-  const [email, setEmail] = useState('');
+  // const [userName, setUserName] = useState('');
+  // const [email, setEmail] = useState('');
   const currentUser = useContext(CurrentUserContext);
 
   firebase.auth().onAuthStateChanged(function (user) {
@@ -26,10 +24,10 @@ const ProfilePage = () => {
     }
   });
 
-  useEffect(() => {
-    setUserName(currentUser.displayName);
-    setEmail(currentUser.email);
-  }, [currentUser]);
+  // useEffect(() => {
+  //   setUserName(currentUser.displayName);
+  //   setEmail(currentUser.email);
+  // }, [currentUser]);
 
   console.log(currentUser);
 
@@ -56,7 +54,6 @@ const ProfilePage = () => {
           <Route path="/profile/settings" component={ProfileSettings} />
         </Switch>
 
-        {/* <CustomButton onClick={() => sendResetPasswordEmail(currentUser.email)}>Reset Password</CustomButton> */}
       </div>
     </div>
   );

@@ -23,6 +23,7 @@ const DashboardPendingForReview = () => {
 
   return (
     <div>
+      
       <h1 className={styles['title']}>Pendings Appointments For Review</h1>
       <div className={styles['wrapper']}>
         {data.map((appointment, idx) =>

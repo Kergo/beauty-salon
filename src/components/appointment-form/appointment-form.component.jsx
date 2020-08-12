@@ -32,7 +32,7 @@ const AppointmentPopup = () => {
       await createDocument('appointments', data);
       setState({ name: '', phone: '', email: '', type: '' });
       setStartDate(new Date());
-      history.push('/appointment-completed')
+      history.push('/form-submited')
     } catch (error) {
       console.error(error);
     }

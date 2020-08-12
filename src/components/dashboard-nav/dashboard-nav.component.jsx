@@ -10,6 +10,13 @@ const DashboardNav = () => {
     <div className={styles['dashboard-nav-wrapper']}>
             <div className={styles['option']}
         onClick={() => {
+          history.push(`/dashboard`);
+        }}
+      >
+        Pending
+      </div>
+            <div className={styles['option']}
+        onClick={() => {
           history.push(`${match.url}/appointments`);
         }}
       >

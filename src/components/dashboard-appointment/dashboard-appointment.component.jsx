@@ -8,6 +8,14 @@ const DashboardAppointment = () => {
   const [data, setData] = useState([]);
 
   let actualDate = new Date();
+  let startOfDayDate = new Date(
+    actualDate.getFullYear(),
+    actualDate.getMonth(),
+    actualDate.getDate(),
+    0,
+    0,
+    0
+  );
   let endOfDayDate = new Date(
     actualDate.getFullYear(),
     actualDate.getMonth(),
@@ -19,6 +27,7 @@ const DashboardAppointment = () => {
 
   const refCol = firestore
     .collection('appointments')
+    .where('startDate', '>=', startOfDayDate)
     .where('startDate', '<=', endOfDayDate)
     .orderBy('startDate');
   let unsubscribe = null;
@@ -35,7 +44,6 @@ const DashboardAppointment = () => {
     return () => unsubscribe();
     // eslint-disable-next-line
   }, []);
-  console.log(data);
 
   let nothingForToday = false;
   data.forEach(appointment => {
