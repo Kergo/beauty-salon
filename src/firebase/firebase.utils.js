@@ -226,23 +226,10 @@ export const confirmDocument = async (collection, props) => {
 
 // ---------------------Presentation data ---------------------------
 
-export const getPlasticForChangeCollection = async () => {
+export const getInfoCollection = async (collection) => {
   let data = [];
   await firestore
-    .collection('plastic-for-change-text')
-    .get()
-    .then(querySnapshot => {
-      querySnapshot.forEach(doc => {
-        data.push(doc.data());
-      });
-    });
-  return data;
-};
-
-export const getHomepageCollection = async () => {
-  let data = [];
-  await firestore
-    .collection('homepage')
+    .collection(collection)
     .get()
     .then(querySnapshot => {
       querySnapshot.forEach(doc => {

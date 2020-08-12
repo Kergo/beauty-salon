@@ -30,6 +30,7 @@ import ServicesState from './contexts/services/services.state';
 import CurrentUserContext from './contexts/current-user/current-user.context';
 
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
+import AboutUsPage from './pages/about-us/about-us.component';
 
 class App extends React.Component {
   constructor(props) {
@@ -94,6 +95,7 @@ class App extends React.Component {
                   <Route path="/services/:type" component={ServiceOverview} />
                   <Route exact path="/contacts" component={ContactsPage} />
                   <Route exact path="/wish-list" component={WishListPage} />
+                  <Route exact path='/about-us' component={AboutUsPage} />
                   <Route
                     path="/profile"
                     render={() =>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { getHomepageCollection } from '../../firebase/firebase.utils';
+import { getInfoCollection } from '../../firebase/firebase.utils';
 import CurrentUserContext from '../../contexts/current-user/current-user.context';
 import InfoContainer from '../../components/info-container/info-container.component';
 import ServicesAppointmentInfo from '../../components/services-appointment-info/services-appointment-info.component';
@@ -11,7 +11,7 @@ const HomePage = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await getHomepageCollection();
+      const response = await getInfoCollection('homepage');
       setData(response);
     }
     fetchData();
