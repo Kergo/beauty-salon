@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getPlasticForChangeCollection } from '../../firebase/firebase.utils';
+import { getInfoCollection } from '../../firebase/firebase.utils';
 import InfoContainer from '../../components/info-container/info-container.component';
 import styles from './plastic-for-change.module.css';
 
@@ -9,7 +9,7 @@ const PlasticForChangePage = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await getPlasticForChangeCollection();
+      const response = await getInfoCollection('plastic-for-change-text');
       setData(response);
     }
     fetchData();

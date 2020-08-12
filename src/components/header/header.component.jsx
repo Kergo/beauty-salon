@@ -27,7 +27,7 @@ const Header = () => {
         <Link className="option" to="/services">
           Services
         </Link>
-        <Link className="option" to="/about">
+        <Link className="option" to="/about-us">
           About Us
         </Link>
         <Link className="option" to="/contacts">
