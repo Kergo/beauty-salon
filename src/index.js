@@ -1,12 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import CartProvider from './contexts/cart/cart.provider';
 import WishListProvider from './contexts/wish-list/wish-list.provider';
 import ScrollToTop from './components/scroll-to-top/scroll-to-top.component';
+import { transitions, positions, Provider as AlertProvider } from 'react-alert'
+import AlertTemplate from 'react-alert-template-basic'
+import './index.css';
+
+const options = {
+  position: positions.MIDDLE,
+  timeout: 3000,
+  offset: '30px',
+  transition: transitions.SCALE
+}
 
 ReactDOM.render(
   <CartProvider>
@@ -14,7 +23,9 @@ ReactDOM.render(
       <BrowserRouter>
         <React.StrictMode>
           <ScrollToTop />
+          <AlertProvider template={AlertTemplate} {...options}>
           <App />
+          </AlertProvider>
         </React.StrictMode>
       </BrowserRouter>
     </WishListProvider>

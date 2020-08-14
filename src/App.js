@@ -96,7 +96,7 @@ class App extends React.Component {
                   <Route path="/services/:type" component={ServiceOverview} />
                   <Route exact path="/contacts" component={ContactsPage} />
                   <Route exact path="/wish-list" component={WishListPage} />
-                  <Route exact path='/about-us' component={AboutUsPage} />
+                  <Route exact path="/about-us" component={AboutUsPage} />
                   <Route
                     path="/profile"
                     render={() =>
@@ -113,10 +113,7 @@ class App extends React.Component {
                     component={PlasticForChangePage}
                   />
                   <Route path="/appointment" component={AppointmentPopup} />
-                  <Route
-                    path="/form-submited"
-                    component={FormSubmited}
-                  />
+                  <Route path="/form-submited" component={FormSubmited} />
                   <Route
                     path="/order-completed"
                     component={OrderCompletedPage}
@@ -150,7 +147,7 @@ class App extends React.Component {
                       )
                     }
                   />
-                  <Route component={NotFound} />
+                  {/* <Route path="*" component={NotFound} /> */}
                 </ServicesState>
               </ProductsState>
             </Switch>
