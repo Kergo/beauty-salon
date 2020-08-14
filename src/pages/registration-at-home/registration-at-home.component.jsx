@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import {useHistory} from 'react-router-dom'
-import {createDocument} from '../../firebase/firebase.utils'
+import { useHistory } from 'react-router-dom';
+import { createDocument } from '../../firebase/firebase.utils';
+import { useAlert } from 'react-alert';
 import FormInput from '../../components/form-input/form-input.component';
 import CustomButton from '../../components/custom-button/custom-button.component';
 import styles from './registration-at-home.module.css';
@@ -12,18 +13,24 @@ const RegistrationAtHomePage = () => {
     email: '',
     phone: '',
   });
-  let history = useHistory()
-
+  let history = useHistory();
+  const alert = useAlert();
   const handleSubmit = async e => {
     e.preventDefault();
 
     let data = { ...state };
+    const myPhoneRegEx = /08[789]\d{7}/g;
+
+    if (!myPhoneRegEx.test(state.phone) || state.phone.length > 10) {
+      alert.error('Ohhh Please Enter a valid Bulgarian Mobile Number ;)');
+      return;
+    }
     try {
       await createDocument('register-at-home', data);
       setState({ firstName: '', lastName: '', email: '', phone: '' });
-      history.push('/form-submited')
+      history.push('/form-submited');
     } catch (error) {
-      console.error(error);
+      alert.error(error.message);
     }
   };
 
@@ -37,7 +44,7 @@ const RegistrationAtHomePage = () => {
   return (
     <div className={styles['wrapper']}>
       <div className={styles['hero-picture']}></div>
-      <div className={styles["info-container"]}>
+      <div className={styles['info-container']}>
         <h1 className={styles['title']}>Be Part Of Our Family</h1>
         <h3>Register With The The Ugly Duckling at Home ™</h3>
         <h4 className={styles['mb']}>
@@ -59,7 +66,7 @@ const RegistrationAtHomePage = () => {
           Duckling At Home™ or host a party you need to be 18 years or older.
         </p>
       </div>
-      <div className={styles["register-form-container"]}>
+      <div className={styles['register-form-container']}>
         <h2>Register</h2>
         <form onSubmit={handleSubmit}>
           <FormInput
@@ -94,7 +101,7 @@ const RegistrationAtHomePage = () => {
             handleChange={handleChange}
             required
           />
-          <CustomButton type='submit'>Confirm</CustomButton>
+          <CustomButton type="submit">Confirm</CustomButton>
         </form>
       </div>
     </div>

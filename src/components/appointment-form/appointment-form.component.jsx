@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import { useAlert } from 'react-alert';
 
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
@@ -21,6 +22,7 @@ const AppointmentPopup = () => {
     type: '',
   });
   const [startDate, setStartDate] = useState(new Date());
+  const alert = useAlert();
   let history = useHistory();
   registerLocale('en-GB', enGB);
 
@@ -28,13 +30,24 @@ const AppointmentPopup = () => {
     e.preventDefault();
 
     let data = { ...state, startDate };
+    if (startDate < new Date()) {
+      alert.error("Oh No it's a bit late for this time...");
+      return;
+    }
+    const myPhoneRegEx = /08[789]\d{7}/g;
+    
+
+    if (!myPhoneRegEx.test(state.phone) || state.phone.length > 10) {
+      alert.error("Ohhh Please Enter a valid Bulgarian Mobile Number ;)");
+      return;
+    }
     try {
       await createDocument('appointments', data);
       setState({ name: '', phone: '', email: '', type: '' });
       setStartDate(new Date());
-      history.push('/form-submited')
+      history.push('/form-submited');
     } catch (error) {
-      console.error(error);
+      alert.error(error.message);
     }
   };
 
@@ -50,7 +63,7 @@ const AppointmentPopup = () => {
     setStartDate(date);
   };
 
-  // Todo: 
+  // Todo:
   // Error handling-- Check if hour is less validate phone number
   // Implement recaptcha
 

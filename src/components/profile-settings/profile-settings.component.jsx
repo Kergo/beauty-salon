@@ -4,6 +4,8 @@ import CurrentUserContext from '../../contexts/current-user/current-user.context
 import styles from './profile-settings.module.css';
 import CustomButton from '../custom-button/custom-button.component';
 import { updateUserProfile } from '../../firebase/firebase.utils';
+import { useAlert } from 'react-alert';
+
 
 const ProfileSettings = () => {
   const [state, setState] = useState({
@@ -14,6 +16,7 @@ const ProfileSettings = () => {
   });
 
   const currentUser = useContext(CurrentUserContext);
+  const alert = useAlert();
 
   useEffect(() => {
     setState({
@@ -29,10 +32,19 @@ const ProfileSettings = () => {
 
     const additionalData = state;
 
+    const myPhoneRegEx = /08[789]\d{7}/g;
+    
+
+    if (!myPhoneRegEx.test(state.phone) || state.phone.length > 10) {
+      alert.error("Ohhh Please Enter a valid Bulgarian Mobile Number ;)");
+      return;
+    }
+
     try {
       await updateUserProfile(currentUser, additionalData)
+      alert.success('Good Job! You Updated Your Profile Successfully')
     } catch (error) {
-      console.error(error);
+      alert.error(error.message)
     }
   };
 
