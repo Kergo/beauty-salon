@@ -9,6 +9,7 @@ import ScrollToTop from './components/scroll-to-top/scroll-to-top.component';
 import { transitions, positions, Provider as AlertProvider } from 'react-alert'
 import AlertTemplate from 'react-alert-template-basic'
 import './index.css';
+import ErrorBoundary from './components/error-boundary/error-boundary.component';
 
 const options = {
   position: positions.MIDDLE,
@@ -24,7 +25,9 @@ ReactDOM.render(
         <React.StrictMode>
           <ScrollToTop />
           <AlertProvider template={AlertTemplate} {...options}>
+            <ErrorBoundary>
           <App />
+            </ErrorBoundary>
           </AlertProvider>
         </React.StrictMode>
       </BrowserRouter>
