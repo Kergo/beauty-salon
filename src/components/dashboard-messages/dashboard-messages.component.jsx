@@ -23,7 +23,6 @@ const DashboardMessages = () => {
     return () => unsubscribe();
     // eslint-disable-next-line
   }, []);
-  console.log(data);
 
   let nothingForToday = false;
   data.forEach(message => {
