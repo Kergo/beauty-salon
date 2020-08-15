@@ -1,8 +1,8 @@
 # Beauty Salon
-Beauty Salon is a Web Application representing a small local business. It's main purpose is to provide customers with information such as prices for services, location and more. Additionally people are able to make an appointment for offered services and purchase products at home. A great benefit of being registered is that each time a product is buyed or an appointment is completed they earn points which can be used for disscounts. Another opportunity is to become independent consultant and win money by promoting our products. Admin panel is provided for employees to keep on track of new appointments, messages and new members of "Our Family" promoters.
+Beauty Salon is a Web Application representing a small local business. It's main purpose is to provide customers with information such as prices for services, location and more. Additionally people are able to make an appointment for offered services and purchase products at home. A great benefit of being registered is that each time a product is buyed or an appointment is completed they earn points which can be used for discounts. Another opportunity is to become independent consultant and win money by promoting our products. Admin panel is provided for employees to keep on track of new appointments, messages and new members of "Our Family" promoters.
 
 ## 1. How is it built
-The Front-End part is build with React and uses two types of styling (SCSS & module) just for the sake of traning purposes.
+The Front-End part is build with React and uses two types of styling (SCSS & module) just for the sake of training purposes.
 The Back-End part is based on firebase. 
     For storing data is used Cloud Firestore. 
     For storing files is used Storage provided by Firebase.
@@ -11,8 +11,8 @@ The Back-End part is based on firebase.
 ## 2. Functionality
 Unauthorized users have access to the full functionality of the application except using the profile page.
 Authorized users can change their profile settings and review their orders.
-Authorized users with admin roles have access to the dashboard where they can upload new products and aprove new requests and keep on track of appointments for today.
-Stripe payment is implemented where admins have additional dashboard. There they can review all of the details of a purchase and completed the order.
+Authorized users with admin roles have access to the dashboard where they can upload new products and approve new requests and keep on track of appointments for today.
+Stripe payment is implemented and admins have additional dashboard. There they can review all of the details of a purchase and completed the order.
 
 ## Routes
 
