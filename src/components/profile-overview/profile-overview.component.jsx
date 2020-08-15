@@ -24,6 +24,9 @@ const ProfileOverview = () => {
   return (
     <div className={styles['container']}>
       <h1>Hi there {currentUser.displayName} ^_^</h1>
+      <h3>You Have Earned {currentUser.totalPoints} Points.</h3>
+      <h3>Good Job!</h3>
+      <h4>You Can Contact our team to use your points at any time you want!</h4>
       {data.heading === '' ? (
         <Spinner />
       ) : (

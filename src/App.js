@@ -147,7 +147,8 @@ class App extends React.Component {
                       )
                     }
                   />
-                  {/* <Route path="*" component={NotFound} /> */}
+                  <Route path="/not-found" component={NotFound} />
+                  <Route render={() => <Redirect to="not-found" />} />
                 </ServicesState>
               </ProductsState>
             </Switch>

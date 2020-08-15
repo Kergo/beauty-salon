@@ -124,41 +124,6 @@ export const getProductsDocuments = async docRef => {
   return productsDoc;
 };
 
-export const getAllProductsDocuments = async () => {
-  let data = [];
-  await firestore
-    .collection('products')
-    .get()
-    .then(querySnapshot => {
-      querySnapshot.forEach(doc => {
-        // data.push(doc.data())
-        console.log(doc.data());
-        data = convertCollectionsSnapshotToMap(querySnapshot);
-        // console.log(productsMap);
-        // return productsMap;
-      });
-    });
-  console.log(data);
-  return data;
-};
-
-export const convertCollectionsSnapshotToMap = collections => {
-  const transformedCollection = collections.docs.map(doc => {
-    const { items } = doc.data();
-
-    return {
-      routeName: encodeURI(doc.id.toLowerCase()),
-      id: doc.id,
-      items,
-    };
-  });
-  // console.log(transformedCollection);
-  return transformedCollection.reduce((accumulator, collection) => {
-    accumulator[collection] = collection;
-    return accumulator;
-  }, {});
-};
-
 // Adding product into the database
 export const createProductDocument = async props => {
   const categoryRef = firestore.collection('products').doc(props.category);
@@ -221,8 +186,6 @@ export const confirmDocument = async (collection, props) => {
 
 // ---------------------------------------------------------------
 
-// -------------------- Contact ------------------------------
-
 
 // ---------------------Presentation data ---------------------------
 
@@ -246,6 +209,8 @@ export const getHomepagePartOfTheStoryDocument = async () => {
   return doc.data();
 };
 // ---------------------------------------------------------------------
+
+
 firebase.initializeApp(config);
 
 export const auth = firebase.auth();
