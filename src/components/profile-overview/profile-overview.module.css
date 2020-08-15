@@ -7,3 +7,9 @@
     width: 80%;
     height: 40%;
 }
+
+@media screen and (max-width: 800px) {
+    .info-container {
+        width: 100%;
+    }
+  }

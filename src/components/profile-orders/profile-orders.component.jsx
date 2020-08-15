@@ -27,8 +27,8 @@ const ProfileOrders = () => {
   } else {
     return (
       <div className={styles['wrapper-no-orders']}>
-        <h1>Ah so pity you haven't order anything by us yet...</h1>
-        <h3>Don't wait and check out our exclusive collection</h3>
+        <h1 className={styles['no-orders']}>Ah so pity you haven't order anything by us yet...</h1>
+        <h3 className={styles['no-orders-h3']}>Don't wait and check out our exclusive collection</h3>
         <CustomButton
           onClick={() => {
             history.push(`/products`);

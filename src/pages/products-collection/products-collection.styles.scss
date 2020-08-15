@@ -1,6 +1,12 @@
 .products-wrapper {
     display: flex;
     flex-wrap: wrap;
+
+    @media screen and (max-width: 800px) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 1rem;
+    }
 }
 
 .title {
@@ -13,8 +19,14 @@
     text-align: center;
     width: 50%;
     margin: 2rem auto;
+    @media screen and (max-width: 800px) {
+        width: 100%;
+    }
 
     &-buttons {
         display: flex;
+        @media screen and (max-width: 800px) {
+            flex-direction: column;
+        }
     }
 }

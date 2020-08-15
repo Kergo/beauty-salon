@@ -32,3 +32,34 @@
   text-align: center;
   font-size: 2.8rem;
 }
+
+@media screen and (max-width: 800px) {
+  .info-container {
+    flex-direction: column;
+  }
+  .info-container-rev {
+    flex-direction: column;
+  }
+
+  .container-image {
+    width: 90%;
+  }
+
+  .info-inner {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .main-heading {
+    font-size: 2rem;
+    text-align: center;
+    margin: 3rem 0;
+  }
+
+  .info-header {
+    text-align: center;
+    font-size: 1.8rem;
+  }
+}

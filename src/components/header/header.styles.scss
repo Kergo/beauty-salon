@@ -12,6 +12,162 @@ svg {
   z-index: 1;
   padding: 1rem;
 
+  &__checkbox {
+    display: none;
+  }
+
+  &__button {
+    display: none;
+  }
+
+  &__icon {
+    display: none;
+  }
+
+  &__background {
+    display: none;
+  }
+
+  @media screen and (max-width: 800px) {
+    &__button {
+      display: inline-block;
+    }
+
+    &__icon {
+      display: inline-block;
+    }
+
+    &__background {
+      display: inline-block;
+    }
+    &__background {
+      height: 6rem;
+      width: 6rem;
+      border-radius: 50%;
+      position: fixed;
+      top: 0;
+      right: 3.5rem;
+      background-image: radial-gradient(#345, #345);
+      z-index: 1000;
+      transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+    }
+
+    .options {
+      margin-top: 15rem;
+      flex-direction: column;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 1500;
+      padding: 0;
+      opacity: 0;
+      visibility: hidden;
+      width: 0;
+      transition: all 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+
+      .option {
+        z-index: 9999;
+      }
+    }
+
+    &__checkbox:checked ~ &__background {
+      transform: scale(80);
+    }
+
+    &__checkbox:checked ~ .options {
+      opacity: 1;
+      visibility: visible;
+      width: 100%;
+    }
+
+    &__button {
+      background-color: #345;
+      height: 7rem;
+      width: 7rem;
+      position: fixed;
+      top: 0;
+      right: 3rem;
+      border-radius: 50%;
+      z-index: 2000;
+      box-shadow: 0 1rem 3rem rgba(#000, 0.1);
+      text-align: center;
+      cursor: pointer;
+    }
+
+    // Icon
+    &__icon {
+      position: relative;
+      margin-top: 3.5rem;
+
+      &,
+      &::before,
+      &::after {
+        display: inline-block;
+        background-color: #6abd6c;
+        width: 3rem;
+        height: 2px;
+      }
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        transition: all 0.65s;
+      }
+
+      &::before {
+        top: -0.8rem;
+      }
+      &::after {
+        top: 0.8rem;
+      }
+    }
+
+    &__button:hover &__icon::before {
+      top: 1rem;
+    }
+
+    &__button:hover &__icon::after {
+      top: -1rem;
+    }
+
+    &__checkbox:checked + &__button &__icon {
+      background-color: transparent;
+    }
+
+    &__checkbox:checked + &__button &__icon::before {
+      top: 0;
+      transform: rotate(135deg);
+    }
+
+    &__checkbox:checked + &__button &__icon::after {
+      top: 0;
+      transform: rotate(-135deg);
+    }
+
+    #div-two {
+      height: 5rem;
+      width: 5rem;
+      display: flex;
+      flex-direction: row;
+      z-index: 8555;
+      opacity: 1;
+      visibility: visible;
+      margin-top: 0;
+      top: 1rem;
+      left: 12rem;
+      .cart-icon {
+        margin: 0 1.5rem;
+      }
+    }
+
+    .dashboard {
+      display: none;
+    }
+  }
+
   .logo-container {
     height: 5rem;
     width: 5rem;

@@ -5,7 +5,13 @@
     // background-color: #222;
     // color: white;
 
+    @media screen and (max-width: 800px) {
+        font-size: 1.6rem;
+    }
+
     &__name {
-        // margin-bottom: 5rem;
+        @media screen and (max-width: 800px) {
+            width: 90%;
+        }
     }
 }

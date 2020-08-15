@@ -31,7 +31,6 @@ import CurrentUserContext from './contexts/current-user/current-user.context';
 
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import AboutUsPage from './pages/about-us/about-us.component';
-import NotFound from './components/not-found/not-found.component';
 
 class App extends React.Component {
   constructor(props) {
@@ -147,8 +146,7 @@ class App extends React.Component {
                       )
                     }
                   />
-                  <Route path="/not-found" component={NotFound} />
-                  <Route render={() => <Redirect to="not-found" />} />
+                  {/* <Route render={() => <Redirect to="/" />} /> */}
                 </ServicesState>
               </ProductsState>
             </Switch>

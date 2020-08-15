@@ -18,6 +18,12 @@ const Header = () => {
   const history = useHistory();
   return (
     <div className="header">
+       <input type="checkbox" className="header__checkbox" id="navi-toggle"></input>
+       <label htmlFor="navi-toggle" className="header__button">
+          <span className="header__icon">&nbsp;</span>
+        </label>
+
+        <div className="header__background">&nbsp;</div>
       <Link className="logo-container" to="/">
         <Logo className="logo" />
       </Link>
@@ -50,7 +56,7 @@ const Header = () => {
           </Link>
         )}
         </div>
-        <div className="options">
+        <div className="options" id='div-two'>
         <Link to="/profile" className='second-option'>
           <i className="far fa-user fa-2x"></i>
         </Link>
@@ -59,7 +65,7 @@ const Header = () => {
           <i className={'far fa-heart fa-2x'}></i>
         </Link>
         {currentUser && currentUser.role === 'admin' ? (
-          <Link className="option" to="/dashboard">
+          <Link className="option dashboard" to="/dashboard">
             Dashboard
           </Link>
         ) : null}

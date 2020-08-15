@@ -1,23 +1,29 @@
 .contacts-page-wrapper {
   margin-bottom: 6rem;
-  
+
+  @media screen and (max-width: 800px) {
+    margin-bottom: 1rem;
+  }
+
   .contact-details-container {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      margin-bottom: 16rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 16rem;
 
-    .contact-details-wrapper {
-    //   margin-top: 4rem;
+    @media screen and (max-width: 800px) {
+      flex-direction: column;
+      justify-content: space-between;
+      margin-bottom: 8rem;
     }
 
-    .opening-time {
-        font-size: inherit;
-    }
-    
     .map-container {
       height: 50vh;
       width: 40vw;
+      @media screen and (max-width: 800px) {
+        width: 90%;
+        margin-bottom: 10rem;
+      }
     }
 
     .link-cta {
@@ -46,6 +52,9 @@
 }
 
 .contact-form-wrapper {
-    width: 40%;
-    margin: 0 auto;
+  width: 40%;
+  margin: 0 auto;
+  @media screen and (max-width: 800px) {
+    width: 80%;
+  }
 }

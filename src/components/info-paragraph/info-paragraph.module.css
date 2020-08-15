@@ -3,3 +3,10 @@
     margin-bottom: .7rem;
     font-weight: bold;
 }
+
+@media screen and (max-width: 800px) {
+    .paragraph {
+        font-size: 1.6rem;
+        font-weight: unset;
+    }
+}
