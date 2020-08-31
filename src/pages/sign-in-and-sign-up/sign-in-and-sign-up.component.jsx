@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import SignIn from '../../components/sign-in/sign-in.component';
 import SignUp from '../../components/sign-up/sign.up.component';
-import CustomButton from '../../components/custom-button/custom-button.component';
+import CustomButton from '../../components/button/custom-button/custom-button.component';
 
 import './sign-in-and-sign-up.styles.scss';
 

@@ -2,11 +2,11 @@ import React, { useContext, useEffect } from 'react';
 import ProductsContext from '../../contexts/products/products.context';
 import {useHistory} from 'react-router-dom'
 
-import ProductItem from '../../components/product-item/product-item.component';
+import ProductItem from '../../components/product/product-item/product-item.component';
 import Spinner from '../../components/spinner/spinner.component';
 
 import './products-collection.styles.scss';
-import CustomButton from '../../components/custom-button/custom-button.component';
+import CustomButton from '../../components/button/custom-button/custom-button.component';
 
 const ProductsCollectionPage = ({ match }) => {
   const productsContext = useContext(ProductsContext);

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { getInfoCollection } from '../../firebase/firebase.utils';
 import CurrentUserContext from '../../contexts/current-user/current-user.context';
 import InfoContainer from '../../components/info-container/info-container.component';
-import ServicesAppointmentInfo from '../../components/services-appointment-info/services-appointment-info.component';
+import ServicesAppointmentInfo from '../../components/appointment/services-appointment-info/services-appointment-info.component';
 import './homepage.styles.scss';
 
 const HomePage = () => {

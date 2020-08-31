@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
 import { auth } from '../../firebase/firebase.utils';
-import CartIcon from '../cart-icon/cart-icon.component';
-import CartDropdown from '../cart-dropdown/cart-dropdown.component';
+import CartIcon from '../cart/cart-icon/cart-icon.component';
+import CartDropdown from '../cart/cart-dropdown/cart-dropdown.component';
 import CurrentUserContext from '../../contexts/current-user/current-user.context';
 import { CartContext } from '../../contexts/cart/cart.provider';
 

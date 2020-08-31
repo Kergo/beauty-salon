@@ -19,9 +19,9 @@ import RegistrationAtHomePage from './pages/registration-at-home/registration-at
 
 import Header from './components/header/header.component';
 import Footer from './components/footer/footer.component';
-import ProductPreview from './components/product-preview/product-preview.component';
-import ServiceOverview from './components/service-overview/service-overview.component';
-import AppointmentPopup from './components/appointment-form/appointment-form.component';
+import ProductPreview from './components/product/product-preview/product-preview.component';
+import ServiceOverview from './components/service/service-overview/service-overview.component';
+import AppointmentPopup from './components/appointment/appointment-form/appointment-form.component';
 import ForgotPasswordPopup from './components/forgot-password-popup/forgot-password-popup.component';
 import FormSubmited from './components/form-submited/form-submited.component';
 

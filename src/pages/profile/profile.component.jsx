@@ -1,10 +1,10 @@
 import React from 'react';
-import ProfileNav from '../../components/profile-nav/profile-nav.component';
-import ProfileOrders from '../../components/profile-orders/profile-orders.component';
-import styles from './profile.module.css';
 import { Switch, Route } from 'react-router-dom';
-import ProfileOverview from '../../components/profile-overview/profile-overview.component';
-import ProfileSettings from '../../components/profile-settings/profile-settings.component';
+import ProfileNav from '../../components/profile/profile-nav/profile-nav.component';
+import ProfileOrders from '../../components/profile/profile-orders/profile-orders.component';
+import styles from './profile.module.css';
+import ProfileOverview from '../../components/profile/profile-overview/profile-overview.component';
+import ProfileSettings from '../../components/profile/profile-settings/profile-settings.component';
 
 const ProfilePage = () => {
 

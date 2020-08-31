@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import FormInput from '../form-input/form-input.component';
 import { ReactComponent as Logo } from '../../assets/logo-green-small.svg';
-import CustomButton from '../custom-button/custom-button.component';
+import CustomButton from '../button/custom-button/custom-button.component';
 import { sendResetPasswordEmail } from '../../firebase/firebase.utils';
 
 const ForgotPasswordPopup = () => {

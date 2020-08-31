@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './order-completed.module.css';
-import ProductItem from '../../components/product-item/product-item.component';
+import ProductItem from '../../components/product/product-item/product-item.component';
 
 const OrderCompletedPage = props => {
   const { cartItems, price } = (props.location && props.location.state) || {};

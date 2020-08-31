@@ -1,6 +1,6 @@
 import React from 'react';
 import InfoParagraph from '../info-paragraph/info-paragraph.component';
-import CustomButton from '../custom-button/custom-button.component';
+import CustomButton from '../button/custom-button/custom-button.component';
 import { useHistory } from 'react-router-dom';
 import styles from './info-container.module.css';
 

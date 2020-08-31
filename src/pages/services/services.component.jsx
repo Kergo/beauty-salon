@@ -1,10 +1,10 @@
 import React, { useEffect, useContext } from 'react';
-import ServicesDirectory from '../../components/services-directory/services-directory.component';
+import ServicesDirectory from '../../components/service/services-directory/services-directory.component';
+import ServicesAppointmentInfo from '../../components/appointment/services-appointment-info/services-appointment-info.component';
 import ServicesContext from '../../contexts/services/services.context';
 import Spinner from '../../components/spinner/spinner.component';
 
 import './services.styles.scss';
-import ServicesAppointmentInfo from '../../components/services-appointment-info/services-appointment-info.component';
 
 const ServicesPage = () => {
   const servicesContext = useContext(ServicesContext);

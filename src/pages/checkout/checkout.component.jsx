@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 
 import CheckoutItem from '../../components/checkout-item/checkout-item.component';
 
-import StripeCheckoutButton from '../../components/stripe-button/stripe-button.component';
+import StripeCheckoutButton from '../../components/button/stripe-button/stripe-button.component';
 
 import { CartContext } from '../../contexts/cart/cart.provider';
 

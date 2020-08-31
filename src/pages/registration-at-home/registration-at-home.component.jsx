@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { createDocument } from '../../firebase/firebase.utils';
 import { useAlert } from 'react-alert';
 import FormInput from '../../components/form-input/form-input.component';
-import CustomButton from '../../components/custom-button/custom-button.component';
+import CustomButton from '../../components//button/custom-button/custom-button.component';
 import styles from './registration-at-home.module.css';
 
 const RegistrationAtHomePage = () => {

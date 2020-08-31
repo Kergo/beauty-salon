@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import FormInput from '../form-input/form-input.component';
-import CustomButton from '../custom-button/custom-button.component';
+import CustomButton from '../button/custom-button/custom-button.component';
 import { createDocument } from '../../firebase/firebase.utils';
 import './contact-form.styles.scss';
 

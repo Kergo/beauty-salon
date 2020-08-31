@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 
-import ProductsOverview from '../../components/products-overview/products-overview.component';
+import ProductsOverview from '../../components/product/products-overview/products-overview.component';
 import Spinner from '../../components/spinner/spinner.component';
 import ProductsContext from '../../contexts/products/products.context';
 

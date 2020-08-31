@@ -1,5 +1,5 @@
 import React from 'react';
-import CustomButton from '../custom-button/custom-button.component.jsx';
+import CustomButton from '../button/custom-button/custom-button.component.jsx';
 import { confirmDocument } from '../../firebase/firebase.utils';
 import styles from './our-family-card.module.css';
 const OurFamilyCard = ({ registration }) => {
